@@ -47,6 +47,9 @@ function ArticleItems({article}) {
       <a href="#">
         <h3 className="mt-0.5 text-lg text-white">{article?.attributes?.type?.data?.attributes?.Type}</h3>
       </a>
+      <a href="#">
+        <h3 className="mt-0.5 text-lg text-white"> Published by : {article?.attributes?.users_permissions_user?.data?.attributes?.username}</h3>
+      </a>
 
       <p className="mt-2 line-clamp-3 text-sm/relaxed text-white/95">
         {article?.attributes?.Body}
