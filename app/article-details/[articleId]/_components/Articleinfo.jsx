@@ -5,15 +5,20 @@ function Articleinfo({article,User}) {
     <div>  
  
  
-<Image src={article?.attributes?.ImagesOfResearch?.data?.attributes?.url}
-        width={400}
-        height={580}
-        className="w-100 rounded-lg shadow-lg"
-  
-    alt='Image-card'
-    
-    />
-    {/*  raha tekhdem shahowa khass ghi Ip ta3ref */}
+ <Image
+  src={article?.attributes?.ImagesOfResearch?.data?.attributes?.url || ''}
+  width={400}
+  height={580}
+  className="w-100 rounded-lg shadow-lg"
+  alt="Image-card"
+/>
+<Image
+  src={User?.avatar?.url  }
+  width={400}
+  height={580}
+  className="w-100 rounded-lg shadow-lg"
+  alt="Image-card"
+/>
     </div>
   )
 }

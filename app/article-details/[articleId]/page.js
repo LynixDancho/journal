@@ -7,30 +7,28 @@ import React, { useEffect, useState } from 'react'
 import ArticleBody from './_components/ArticleBody'
 
 function ArticleDetails({params}) {
+  
+  const [articleDetails,setProductDetails]=useState({})
   const[userDetails,setUserDetails]=useState({})
   useEffect(()=>{
     getArticleById_()
 },[params?.articleId])
   const getArticleById_=()=>{
 ArticleApi.getArticleById(params?.articleId).then(res=>{
-
-  console.log('Article item', res.data.data)
+   console.log('Article item', res.data.data)
   setProductDetails(res.data.data)
+  ArticleApi.getUserById(res?.data.data.attributes.users_permissions_user.data.id).then(res=>{
 
+    setUserDetails(res.data)
+    console.log("test ", res.data)
+
+
+
+  })
+ 
 })
   }
-  const [articleDetails,setProductDetails]=useState({})
-  useEffect(()=>{
-    getUserById()
-},[params?.userId])
-  const getUserById=()=>{
-ArticleApi.getUserById(params?.userId).then(res=>{
-
-  console.log(' UserData', res.data)
-  setUserDetails(res.data)
-
-})
-  }
+   
   
 
 
