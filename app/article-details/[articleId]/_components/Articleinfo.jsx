@@ -3,22 +3,18 @@ import Image from 'next/image'
 function Articleinfo({article,User}) {
   return (
     <div>  
- 
- 
- <Image
-  src={article?.attributes?.ImagesOfResearch?.data?.attributes?.url || ''}
-  width={400}
-  height={580}
-  className="w-100 rounded-lg shadow-lg"
-  alt="Image-card"
-/>
-<Image
+ <img
   src={User?.avatar?.url  }
-  width={400}
-  height={580}
-  className="w-100 rounded-lg shadow-lg"
-  alt="Image-card"
+   
+  className="w-52 h-52 rounded-full"
+ alt="Avatar"
 />
+
+<h1 className='mt-4  text-xl font-bold tracking-wide'>Submitted By : {User?.username}</h1>
+
+ 
+
+
     </div>
   )
 }
