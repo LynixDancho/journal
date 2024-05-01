@@ -1,21 +1,20 @@
 import React from 'react'
 import Image from 'next/image'
+import '../this_area.css'
+
 function Articleinfo({article,User}) {
-  return (
-    <div>  
+  return (<>
+    <div className='PictureAndBio'>  
  <img
   src={User?.avatar?.url  }
    
-  className="w-52 h-52 rounded-full"
+  className="avatar shadow-lg"
  alt="Avatar"
 />
-
-<h1 className='mt-4  text-xl font-bold tracking-wide'>Submitted By : {User?.username}</h1>
-
- 
-
+<h1 className=' SubmittedBy    text-xl font-bold dark:text-white  '>Submitted By : {User?.username}</h1>
 
     </div>
+    </>
   )
 }
 

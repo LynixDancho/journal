@@ -5,7 +5,7 @@ import ArticleApi from '@/app/_utils/ArticleApi'
 import React, { useEffect, useState } from 'react'
  import Articleinfo from './_components/Articleinfo'
 import ArticleBody from './_components/ArticleBody'
-
+import './this_area.css'
 function ArticleDetails({params}) {
   
   const [articleDetails,setProductDetails]=useState({})
@@ -36,19 +36,21 @@ ArticleApi.getArticleById(params?.articleId).then(res=>{
 
 
   return (
-    <div className='px-10 md:px-28 py-8'> 
-      <BreadCrumb/>
+    <> <BreadCrumb/>
+    
+     
 
-    <div className='mt-10  justify-around flex flex-col md:flex-row'>
+    <div className='pagecss'>
     <Articleinfo article={articleDetails}  User={userDetails} />
 
-    <ArticleBody article={articleDetails}/>
+    <ArticleBody article={articleDetails} User={userDetails}/>
 
     </div>
 
 
 
-    </div>
+   
+    </>
   )
 }
 
