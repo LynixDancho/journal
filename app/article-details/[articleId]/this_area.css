@@ -12,6 +12,11 @@
     flex-direction: column;
     margin-right: 25%;
  }
+ .pictureofthearticle{
+
+    border-radius: 15%;
+
+ }
 .ThepictureandBody{
 flex-direction: column;
 display: flex;
@@ -29,7 +34,11 @@ display: flex;
 
 
 
+.username_in_articlBody{
+    display: none;
 
+
+}
 
 
 
@@ -40,6 +49,10 @@ display: flex;
         .avatar{
            display: none;
 
+
+        }
+        .username_in_articlBody{
+            display: block;
 
         }
         .pagecss{

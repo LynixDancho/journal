@@ -6,7 +6,9 @@ import React, { useEffect, useState } from 'react'
  import Articleinfo from './_components/Articleinfo'
 import ArticleBody from './_components/ArticleBody'
 import './this_area.css'
+import { usePathname } from 'next/navigation'
 function ArticleDetails({params}) {
+  const path =usePathname();
   
   const [articleDetails,setProductDetails]=useState({})
   const[userDetails,setUserDetails]=useState({})
@@ -36,7 +38,7 @@ ArticleApi.getArticleById(params?.articleId).then(res=>{
 
 
   return (
-    <> <BreadCrumb/>
+    <> <BreadCrumb  path={path}/>
     
      
 

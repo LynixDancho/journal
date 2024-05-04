@@ -1,12 +1,13 @@
 import React from 'react'
 import Image from 'next/image'
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import Link from 'next/link';
 
 function ArticleItems({article}) {
   const content   = article?.attributes?.Body
 
   return (
-    <div className='hover:border p-1 hover:shadow-md  rounded-lg  border-teal-700   hover:cursor-pointer '>  
+    <Link href={`/article-details/${article?.id}`} className='hover:border p-1 hover:shadow-md  rounded-lg  border-teal-700   hover:cursor-pointer '>  
     
     <article className="relative overflow-hidden rounded-lg shadow transition hover:shadow-lg">
   
@@ -63,7 +64,7 @@ function ArticleItems({article}) {
 </article>
 
     
-    </div>
+    </Link>
   )
 }
 
