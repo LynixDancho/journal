@@ -1,6 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+
 function ArticleItems({article}) {
+  const content   = article?.attributes?.Body
+
   return (
     <div className='hover:border p-1 hover:shadow-md  rounded-lg  border-teal-700   hover:cursor-pointer '>  
     
@@ -52,7 +56,7 @@ function ArticleItems({article}) {
       </a>
 
       <p className="mt-2 line-clamp-3 text-sm/relaxed text-white/95">
-        {article?.attributes?.Body}
+        {article?.attributes?.Description_Of_The_Research}
       </p>
     </div>
   </div>

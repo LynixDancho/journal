@@ -1,15 +1,16 @@
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import '../this_area.css'
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
 function ArticleBody({article,User}) {
-
-  const content   = article?.attributes?.Body
-  
- 
-  
+  const [content, setContent] = useState(null); 
+   useEffect(() => {
+    if (article && article.attributes && article.attributes.Body) {
+      setContent(article.attributes.Body); 
+    }
+  }, [article]);
   return (
     <div className='ThepictureandBody'> 
     
@@ -30,13 +31,15 @@ function ArticleBody({article,User}) {
     {article?.attributes?.Title}
 
   </h1>
+  
+ 
   <h1 className='font-bold mt-3 mb-3 mr-5'  >
   {User?.username && User.username.charAt(0).toUpperCase() + User.username.slice(1)}
 
 
   </h1>
   </div>
-<BlocksRenderer content={content}/>
+  {content && <BlocksRenderer content={content} />}
   
   </div>
   )
