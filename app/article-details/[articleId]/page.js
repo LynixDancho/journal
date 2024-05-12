@@ -1,7 +1,7 @@
 'use client'
 
-import BreadCrumb from '@/app/_components/BreadCrumb'
-import ArticleApi from '@/app/_utils/ArticleApi'
+import BreadCrumb from '../../_components/BreadCrumb.jsx'
+import ArticleApi from '../../_utils/ArticleApi'
 import React, { useEffect, useState } from 'react'
  import Articleinfo from './_components/Articleinfo'
 import ArticleBody from './_components/ArticleBody'
