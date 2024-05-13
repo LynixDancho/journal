@@ -1,13 +1,9 @@
 import React from 'react'
-
-function PostArticle() {
+ function PostArticle() {
   return (
     <div>
-
-
-
-
-
+  
+ 
 
 
 
