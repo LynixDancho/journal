@@ -1,13 +1,13 @@
 import React from 'react'
 import Link from 'next/link'
-import {UserButton} from "@clerk/nextjs"
+ import { SignInButton } from "@clerk/nextjs";
 
 function Header() {
   return (
     <header className="bg-white ">
     <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
      <Link className="block text-teal-600" href="/">
-        <UserButton afterSignoutUrl="/" />
+        
         <p className="font-sans tracking-6 text-2xl font-medieum"> NIBRAS </p>
        </Link>
        
@@ -45,7 +45,7 @@ function Header() {
               className="block rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
               href="#"
             >
-              Login
+              <SignInButton></SignInButton>
             </a>
   
             <a
