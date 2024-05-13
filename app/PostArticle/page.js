@@ -1,13 +1,13 @@
 import React from 'react'
-
-function PostArticle() {
+import NotePicker from './_component/NotePicker'
+ function PostArticle() {
   return (
     <div>
 
+ 
+<NotePicker/>
 
-
-
-    LLLLL
+     
 
 
 
