@@ -1,13 +1,13 @@
 import React from 'react'
 import NotePicker from './_component/NotePicker'
- function PostArticle() {
+  function PostArticle() {
+    
   return (
     <div>
 
  
 <NotePicker/>
-
-     
+ 
 
 
 

@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^5.0.8",
+    "@emotion/css": "^11.11.2",
     "@strapi/blocks-react-renderer": "^1.0.1",
+    "@tiptap/extension-underline": "^2.3.2",
     "@tiptap/pm": "^2.3.2",
     "@tiptap/react": "^2.3.2",
     "@tiptap/starter-kit": "^2.3.2",
@@ -18,7 +20,11 @@
     "lucide-react": "^0.378.0",
     "next": "14.2.2",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "slate-history": "^0.100.0",
+    "slate-react": "^0.102.0",
+    "strapi-plugin-rich-text": "^1.2.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/node": "20.12.11",
