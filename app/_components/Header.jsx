@@ -7,7 +7,7 @@ import Link from 'next/link'
   const { user } = useUser();
  const [isLoggedIn , setIsLoggedIn] = useState(false)
 useEffect(()=>{
-  setIsLoggedIn(window.location.href.toString().includes('sign-in'))  
+  setIsLoggedIn(window.location.href.toString().includes('sign-in' ))  
 })
 
 
@@ -87,7 +87,7 @@ if (isLoading) {
           <a className="block rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700" href="/sign-in">
             Login
           </a>
-          <a className="hidden rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-600/75 sm:block" href="#">
+          <a className="hidden rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-600/75 sm:block" href="sign-up">
             Register
           </a>
         </div>

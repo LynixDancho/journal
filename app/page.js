@@ -1,19 +1,25 @@
-import Image from "next/image";
-import Hero from "./_components/Hero";
-import ArticleList from "./_components/ArticleList";
-import ArticleSection from "./_components/ArticleSection";
- export const metadata = {
-    title:"Nibras"
-
-
-
-};
-export default async function Home() {
-  
-  return (
-   <div>
  
-    <Hero />
+ import Hero from "./_components/Hero";
+ import ArticleSection from "./_components/ArticleSection";
+import AdduserstoSTrapi from "./_components/AdduserstoSTrapi";
+import {  currentUser } from "@clerk/nextjs/server";
+ 
+
+export default async function Home() {
+   
+const user=await currentUser()
+
+  
+  
+
+
+
+  return (
+
+   <div>
+    <div>  </div>
+    <AdduserstoSTrapi/>
+     <Hero />
      <ArticleSection/>
     </div>
   );
