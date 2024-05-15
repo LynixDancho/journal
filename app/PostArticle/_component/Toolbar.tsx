@@ -1,5 +1,4 @@
-"use client";
-
+ 
 import React from "react";
 import { type Editor } from "@tiptap/react";
 import {
@@ -14,14 +13,16 @@ import {
   Undo,
   Redo,
   Code,
+  Link
 } from "lucide-react";
 
 type Props = {
   editor: Editor | null;
   content: string;
+  onOpenLinkModal: () => void;
 };
 
-const Toolbar = ({ editor, content }: Props) => {
+const Toolbar = ({ editor, content ,onOpenLinkModal }: Props) => {
   const handleOpenLinkModal = () => {
     // Your logic to open a modal or prompt for link details (URL, text)
   };
@@ -47,12 +48,13 @@ const Toolbar = ({ editor, content }: Props) => {
         >
           <Bold className="w-5 h-5" />
         </button>
+
         <button
-      onClick={handleOpenLinkModal}
-      className="px-2 py-1 bg-sky-500 text-white rounded-md hover:bg-sky-700 focus:outline-none"
-    >
-      Link
-    </button>
+          onClick={onOpenLinkModal} // Call the function to open the link modal
+          className=" text-sky-400"
+        >
+          <Link className="w-5 h-5" />
+        </button>
         <button
           onClick={(e) => {
             e.preventDefault();

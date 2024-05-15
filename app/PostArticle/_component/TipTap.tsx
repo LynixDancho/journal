@@ -5,9 +5,26 @@ import StarterKit from "@tiptap/starter-kit";
 import Toolbar from "./Toolbar";
 import Underline from "@tiptap/extension-underline";
 import Link from "@tiptap/extension-link"; // Import the Link extension
-
+import { useState } from "react";
+import {LinkModal} from "./Mondal"
  
 const Tiptap = ({ onChange, content }: any) => {
+  const [isLinkModalOpen, setIsLinkModalOpen] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+
+
+
+  const handleOpenLinkModal = (  ) => {
+    setIsLinkModalOpen(true);
+
+  };
+
+  const handleInsertLink = (url, file,text) => {
+     setIsLinkModalOpen(false);
+     setSelectedFile(file);
+
+  };
+  
   const handleChange = (newContent: string) => {
     onChange(newContent);
   };
@@ -27,9 +44,13 @@ const Tiptap = ({ onChange, content }: any) => {
 
   return (
     <div className="w-full px-4">
-      
-      <Toolbar editor={editor} content={content}/>
-      <EditorContent style={{ whiteSpace: "pre-line" }} editor={editor} />
+          <LinkModal isOpen={isLinkModalOpen} onClose={() => setIsLinkModalOpen(false)} onInsertLink={handleInsertLink} />
+
+          <Toolbar
+        editor={editor}
+        content={content}
+        onOpenLinkModal={handleOpenLinkModal} // Pass the function to open the link modal
+      />      <EditorContent style={{ whiteSpace: "pre-line" }} editor={editor} />
     </div>
   );
 };
