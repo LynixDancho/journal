@@ -1,13 +1,21 @@
 import React from 'react'
  import NotePicker from './_component/NotePicker'
-  async function PostArticle() {
-   
+ import FroalaEditor from 'froala-editor';
+
+   async function PostArticle() {
+    useEffect(() => {
+      // Initialize Froala Editor
+      const editor = new FroalaEditor('#example');
+      return () => {
+        editor.destroy(); // Cleanup when component unmounts
+      };
+    }, []);
+  
 
    return (
     <div>
-       
-  
- <NotePicker/>
+       <div id="example"></div>;
+  <NotePicker/>
  </div>
 
  
