@@ -128,6 +128,7 @@ const Toolbar = ({ editor, content }: Props) => {
             e.preventDefault();
             editor.chain().focus().toggleBlockquote().run();
           }}
+          
           className={
             editor.isActive("blockquote")
               ? "bg-sky-700 text-white p-2 rounded-lg"

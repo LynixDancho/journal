@@ -27,7 +27,7 @@ if (isLoading) {
       
   <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
     <Link  className="block text-teal-600 font-sans tracking-6 text-2xl font-medieum" href="/">
-       NIBRAS  
+    WHITEBEARD  
     </Link>
 
     <div className="flex flex-1 items-center justify-end md:justify-between">
@@ -60,12 +60,12 @@ if (isLoading) {
       
       <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
         <Link  className="block text-teal-600 font-sans tracking-6 text-2xl font-medieum" href="/">
-           NIBRAS  
+        Whitebeard  
         </Link>
 
         <div className="flex flex-1 items-center justify-end md:justify-between">
           <nav aria-label="Global" className="hidden md:block">
-            <ul className="flex items-center gap-6 text-sm">
+            <ul className="flex items-center list-none gap-6 text-sm">
               <li>
                 <a className="text-gray-500 transition  hover:text-gray-500/75" href="/"> Home </a>
               </li>
