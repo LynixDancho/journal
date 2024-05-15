@@ -4,17 +4,18 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Toolbar from "./Toolbar";
 import Underline from "@tiptap/extension-underline";
+import Link from "@tiptap/extension-link"; // Import the Link extension
 
-import Blockquote from '@tiptap/extension-blockquote'
-
+ 
 const Tiptap = ({ onChange, content }: any) => {
   const handleChange = (newContent: string) => {
     onChange(newContent);
   };
+  
   const editor = useEditor({
-    extensions: [StarterKit, Blockquote,Underline],
+    extensions: [StarterKit, Link,Underline],
     editorProps: {
-      attributes: {
+      attributes: { 
         class:
           "flex flex-col px-4 py-3 justify-start border-b border-r border-l border-gray-700 text-gray-400 items-start w-full gap-3 font-medium text-[16px] pt-4 rounded-bl-md rounded-br-md outline-none",
       },

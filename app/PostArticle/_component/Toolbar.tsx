@@ -22,6 +22,9 @@ type Props = {
 };
 
 const Toolbar = ({ editor, content }: Props) => {
+  const handleOpenLinkModal = () => {
+    // Your logic to open a modal or prompt for link details (URL, text)
+  };
   if (!editor) {
     return null;
   }
@@ -44,6 +47,12 @@ const Toolbar = ({ editor, content }: Props) => {
         >
           <Bold className="w-5 h-5" />
         </button>
+        <button
+      onClick={handleOpenLinkModal}
+      className="px-2 py-1 bg-sky-500 text-white rounded-md hover:bg-sky-700 focus:outline-none"
+    >
+      Link
+    </button>
         <button
           onClick={(e) => {
             e.preventDefault();
@@ -123,20 +132,7 @@ const Toolbar = ({ editor, content }: Props) => {
         >
           <ListOrdered className="w-5 h-5" />
         </button>
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            editor.chain().focus().toggleBlockquote().run();
-          }}
-          
-          className={
-            editor.isActive("blockquote")
-              ? "bg-sky-700 text-white p-2 rounded-lg"
-              : "text-sky-400"
-          }
-        >
-          <Quote className="w-5 h-5" />
-        </button>
+        
         <button
           onClick={(e) => {
             e.preventDefault();
