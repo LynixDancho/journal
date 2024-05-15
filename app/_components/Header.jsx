@@ -32,7 +32,7 @@ if (isLoading) {
 
     <div className="flex flex-1 items-center justify-end md:justify-between">
       <nav aria-label="Global" className="hidden md:block">
-        <ul className="flex items-center gap-6 text-sm">
+        <ul className="flex items-center list-none gap-6 text-sm">
           <li>
             <a className="text-gray-500 transition  hover:text-gray-500/75" href="/"> Home </a>
           </li>

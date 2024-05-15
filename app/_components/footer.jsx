@@ -15,7 +15,7 @@ function Footer() {
       A site For Readers And Researches 
     </p>
 
-    <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
+    <ul className="mt-12 list-none flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
       <li>
         <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> About </a>
       </li>
@@ -41,7 +41,7 @@ function Footer() {
       </li>
     </ul>
 
-    <ul className="mt-12 flex justify-center gap-6 md:gap-8">
+    <ul className="mt-12 flex list-none justify-center gap-6 md:gap-8">
       <li>
         <a
           href="#"
@@ -65,7 +65,7 @@ function Footer() {
           href="#"
           rel="noreferrer"
           target="_blank"
-          className="text-gray-700 transition hover:text-gray-700/75"
+          className="text-gray-700 list-none transition hover:text-gray-700/75"
         >
           <span className="sr-only">Instagram</span>
           <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -83,7 +83,7 @@ function Footer() {
           href="#"
           rel="noreferrer"
           target="_blank"
-          className="text-gray-700 transition hover:text-gray-700/75"
+          className="text-gray-700 transition list-none hover:text-gray-700/75"
         >
           <span className="sr-only">Twitter</span>
           <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -99,7 +99,7 @@ function Footer() {
           href="#"
           rel="noreferrer"
           target="_blank"
-          className="text-gray-700 transition hover:text-gray-700/75"
+          className="text-gray-700 transition list-none hover:text-gray-700/75"
         >
           <span className="sr-only">GitHub</span>
           <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -117,7 +117,7 @@ function Footer() {
           href="#"
           rel="noreferrer"
           target="_blank"
-          className="text-gray-700 transition hover:text-gray-700/75"
+          className="text-gray-700 transition list-none hover:text-gray-700/75"
         >
           <span className="sr-only">Dribbble</span>
           <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

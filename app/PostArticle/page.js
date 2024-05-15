@@ -1,13 +1,12 @@
 import React from 'react'
  import NotePicker from './_component/NotePicker'
-  async function PostArticle() {
+   async function PostArticle() {
    
 
    return (
     <div>
        
-  
- <NotePicker/>
+  <NotePicker/>
  </div>
 
  

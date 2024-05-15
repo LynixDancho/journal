@@ -35,20 +35,28 @@ const Toolbar = ({ editor, content  }: Props) => {
   }
 
   const setLink = useCallback(() => {
-    const previousUrl = editor.getAttributes('link').href
-    const url = window.prompt('URL', previousUrl)
-
-    // cancelled
-    if (url === null) {
-      return
-    }   if (url === '') {
-      editor.chain().focus().extendMarkRange('link').unsetLink()
-        .run()
-
-      return
-    }    editor.chain().focus().extendMarkRange('link').setLink({ href: url })
-    .run()
-}, [editor])
+    const previousUrl = editor.getAttributes('link').href;
+    let url = window.prompt('URL', previousUrl);
+  
+    // Cancelled or empty URL
+    if (url === null || url.trim() === '') {
+      editor.chain().focus().extendMarkRange('link').unsetLink().run();
+      return;
+    }
+  
+    // Ensure URL starts with http:// or https://
+    if (!url.match(/^https?:\/\//i)) {
+      url = 'http://' + url;
+    }
+  
+    editor.chain()
+      .focus()
+      .extendMarkRange('link')
+      .setLink({ href: url })
+      
+      .run();
+       
+  }, [editor]);
 
 if (!editor) {
   return null

@@ -1,7 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+a{
+color: #1c60f3;
+cursor:pointer;
 
+}
 ol{
   list-style-type: decimal;
   padding-left: 22px;
