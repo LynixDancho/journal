@@ -27,7 +27,10 @@ const Tiptap = ({ onChange, content }: any) => {
   };
   
   const editor = useEditor({
-    extensions: [StarterKit, Link,Image,Underline],
+    extensions: [StarterKit,   Link.configure({
+      openOnClick: false,
+      autolink: true,
+    }),,Image,Underline],
     editorProps: {
       attributes: { 
         class:
