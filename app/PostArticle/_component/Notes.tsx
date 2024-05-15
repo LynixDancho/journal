@@ -20,7 +20,7 @@ const Notes = () => {
           {data.map((item: any, idx: number) => (
             <div key={idx} style={{ color: colors[idx % colors.length] }}>
               <div
-                className="px-4 py-3 font-bold text-slate-950"
+                className="px-4 py-3 font-bold text-black"
                 style={{ backgroundColor: colors[idx % colors.length] }}
               >
                 Note - {idx + 1}

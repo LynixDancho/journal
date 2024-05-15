@@ -13,19 +13,50 @@ import {
   Undo,
   Redo,
   Code,
-  Link
+  Link,
+  Image
 } from "lucide-react";
+import  { useCallback } from 'react'
+
 
 type Props = {
   editor: Editor | null;
   content: string;
-  onOpenLinkModal: () => void;
-};
+ };
 
-const Toolbar = ({ editor, content ,onOpenLinkModal }: Props) => {
-  const handleOpenLinkModal = () => {
-    // Your logic to open a modal or prompt for link details (URL, text)
-  };
+const Toolbar = ({ editor, content  }: Props) => {
+ 
+  const addImage = () => {
+    const url = window.prompt('URL')
+
+    if (url) {
+      editor.chain().focus().setImage({ src: url }).run()
+    }
+  }
+
+  const setLink = useCallback(() => {
+    const previousUrl = editor.getAttributes('link').href
+    const url = window.prompt('URL', previousUrl)
+
+    // cancelled
+    if (url === null) {
+      return
+    }   if (url === '') {
+      editor.chain().focus().extendMarkRange('link').unsetLink()
+        .run()
+
+      return
+    }    editor.chain().focus().extendMarkRange('link').setLink({ href: url })
+    .run()
+}, [editor])
+
+if (!editor) {
+  return null
+}
+
+
+
+
   if (!editor) {
     return null;
   }
@@ -35,7 +66,26 @@ const Toolbar = ({ editor, content ,onOpenLinkModal }: Props) => {
     gap-5 w-full flex-wrap border border-gray-700"
     >
       <div className="flex justify-start items-center gap-5 w-full lg:w-10/12 flex-wrap ">
-        <button
+      <div className="text-sky-400 mt-1"  >
+      <button  onClick={addImage}><Image className="w-5 h-5" /></button>
+ 
+    </div>
+     
+     
+    <button onClick={setLink} className={  editor.isActive('link') ? 'is-active'  : ''}>
+        <p  className="text-sky-400"> Link</p>
+      </button>
+      <button className="text-sky-400"
+        onClick={() => editor.chain().focus().unsetLink().run()}
+        disabled={!editor.isActive('link')}
+      >
+        Unlink
+      </button>
+
+
+     
+     
+       <button
           onClick={(e) => {
             e.preventDefault();
             editor.chain().focus().toggleBold().run();
@@ -49,12 +99,7 @@ const Toolbar = ({ editor, content ,onOpenLinkModal }: Props) => {
           <Bold className="w-5 h-5" />
         </button>
 
-        <button
-          onClick={onOpenLinkModal} // Call the function to open the link modal
-          className=" text-sky-400"
-        >
-          <Link className="w-5 h-5" />
-        </button>
+       
         <button
           onClick={(e) => {
             e.preventDefault();
