@@ -93,7 +93,7 @@ if (isLoading) {
         </div>
       ) : (
         <div className='flex gap-3'>
-          <Link href="http://localhost:1337/admin/content-manager/collection-types/api::article.article/create" className="hidden rounded-md mr-5 bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-600/75 sm:block" >
+          <Link href="/PostArticle" className="hidden rounded-md mr-5 bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-600/75 sm:block" >
             Post Article
           </Link>
           <UserButton afterSignOutUrl='/' />

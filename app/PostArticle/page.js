@@ -1,30 +1,16 @@
 import React from 'react'
-import NotePicker from './_component/NotePicker'
- async function PostArticle() {
+ import NotePicker from './_component/NotePicker'
+  async function PostArticle() {
    
 
    return (
     <div>
        
-      
-      
+  
+ <NotePicker/>
+ </div>
+
  
-<NotePicker/>
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </div>
   )
 }
 

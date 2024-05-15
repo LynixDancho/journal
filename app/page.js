@@ -16,7 +16,7 @@ const user=await currentUser()
   return (
 
    <div>
-    <div>  </div>
+    
     <AdduserstoSTrapi/>
      <Hero />
      <ArticleSection/>

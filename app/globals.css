@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+h2{
+font-size: 1.875rem ;
+
+}
+h1{
+font-size: 2em;
+
+
+}
 :root {
   --foreground-rgb: 0, 0, 0;
   
