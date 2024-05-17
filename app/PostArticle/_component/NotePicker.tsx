@@ -2,10 +2,9 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Tiptap from "./TipTap";
-import Forum from "./Forum";
-import { DatePicker, Upload, Form, Select } from "antd";
+ import { DatePicker, Upload, Form, Select } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-const Todo = () => {
+ const   Todo = () => {
   const [formData, setFormData] = useState(null);
   const [articleName, setArticleName] = useState("");
   const [SelectValue, handleSelectChange] = useState(null);
@@ -19,57 +18,65 @@ const Todo = () => {
   const handleContentChange = (reason: any) => {
     setContent(reason);
   };
-
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async(e:any) =>{
     e.preventDefault();
-    const Article = {
-      articleName: articleName,
-      SelectValue: SelectValue,
-      articlePicture: articlePicture,
-      Datedata: Datedata,
-     };
 
-    setFormData(Article);
-
-     const data = {
-      id: uuidv4(),
-      content: content,
-    };
-     const FullData ={
-      data:data,
-      Article : Article,
+    console.log(content)
 
 
 
-    }
-    console.log(FullData)
-     if (FullData) {
+  }
+// All u gotta do Now is check the if THe Strapi accepts this Body It sure maybe does idk 
+
+
+  // const handleSubmit = async (e: any) => {
+  //   e.preventDefault();
+  //   console.log(content)
+  //   const Article = {
+  //     data:{
+        
+        
+
+  //     Title: articleName,
+  //     Body:  content,
+
+  //     type:{data :{Type:SelectValue}} ,
+  //     articlePicture: articlePicture,
+  //     DateOfSubmitting: Datedata.$d,
+  //     id: uuidv4(),
     
-      fetch("", {
-        method: "POST",
-        headers: { "Content-Type": " " },
-        body: JSON.stringify(FullData),
-      })
-        .then((response) => {
-          if (response.ok) {
-            console.log("User created successfully!");
-          } else {
-            console.error("Error creating user:", response.statusText);
-          }
-        })
-        .catch((error) => {
-          console.error("Error sending request to Strapi:", error);
-        });
-    }
+  //    }};
 
-    const existingDataString = localStorage.getItem("myData");
-    const existingData = existingDataString
-      ? JSON.parse(existingDataString)
-      : [];
-    const updatedData = [...existingData, data];
-    localStorage.setItem("myData", JSON.stringify(updatedData));
-    setContent("");
-  };
+ 
+     
+  //   setFormData(Article);
+   
+    
+ 
+   
+ 
+  //    if (Article) {
+    
+  //     try {
+  //       const response = await  fetch("http://localhost:1337/api/articles", {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+
+  //         body: JSON.stringify(Article),
+  //       });
+    
+  //       if (!response.ok) {
+  //         throw new Error('Failed to create article');
+  //       }
+    
+  //       console.log('Article created successfully!');
+  //     } catch (error) {
+  //       console.error('Error creating article:', error);
+  //     }
+  //   };
+  //   }
+
+ 
   return (
     <div>
       <form
