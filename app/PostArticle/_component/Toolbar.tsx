@@ -9,12 +9,10 @@ import {
   ListOrdered,
   Heading2,
   Underline,
-  Quote,
-  Undo,
+   Undo,
   Redo,
   Code,
-  Link,
-  Image
+   Image
 } from "lucide-react";
 import  { useCallback } from 'react'
 
@@ -228,7 +226,7 @@ if (!editor) {
           <Redo className="w-5 h-5" />
         </button>
       </div>
-      {content && (
+      {(
         <button
           type="submit"
           className="px-4 bg-sky-700 text-white py-2 rounded-md"

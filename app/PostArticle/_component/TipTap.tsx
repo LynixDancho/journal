@@ -8,31 +8,30 @@ import Link from "@tiptap/extension-link"; // Import the Link extension
 import { useState } from "react";
 import Image from '@tiptap/extension-image';
 
-  
 const Tiptap = ({ onChange, content }: any) => {
   const [isLinkModalOpen, setIsLinkModalOpen] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
 
-
-
-  const handleOpenLinkModal = (  ) => {
+  const handleOpenLinkModal = () => {
     setIsLinkModalOpen(true);
-
   };
 
- 
-  
   const handleChange = (newContent: string) => {
     onChange(newContent);
   };
-  
+
   const editor = useEditor({
-    extensions: [StarterKit,   Link.configure({
-      openOnClick: false,
-      autolink: true,
-    }),,Image,Underline],
+    extensions: [
+      StarterKit,
+      Link.configure({
+        openOnClick: false,
+        autolink: true,
+      }),
+      Image,
+      Underline,
+    ],
     editorProps: {
-      attributes: { 
+      attributes: {
         class:
           "flex flex-col px-4 py-3 justify-start border-b border-r border-l border-gray-700 text-black items-start w-full gap-3 font-medium text-[16px] pt-4 rounded-bl-md rounded-br-md outline-none",
       },
@@ -43,12 +42,9 @@ const Tiptap = ({ onChange, content }: any) => {
   });
 
   return (
-    <div className="w-full px-4">
- 
-          <Toolbar
-        editor={editor}
-        content={content}
-       />      <EditorContent style={{ whiteSpace: "pre-line" }} editor={editor} />
+    <div className="w-full ml-1 px-2">
+      <Toolbar editor={editor} content={content} />
+      <EditorContent style={{ whiteSpace: "pre-line" }} editor={editor} />
     </div>
   );
 };
