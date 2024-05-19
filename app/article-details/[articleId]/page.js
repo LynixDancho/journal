@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react'
  import Articleinfo from './_components/Articleinfo'
 import ArticleBody from './_components/ArticleBody'
 import './this_area.css'
+import Reader from './_components/ReaderTipTap.jsx'
 import { usePathname } from 'next/navigation'
 function ArticleDetails({params}) {
   const path =usePathname();
@@ -44,8 +45,8 @@ ArticleApi.getArticleById(params?.articleId).then(res=>{
 
     <div className='pagecss'>
     <Articleinfo article={articleDetails}  User={userDetails} />
-
-    <ArticleBody article={articleDetails} User={userDetails}/>
+      <Reader article = {articleDetails} User={userDetails} />
+    {/* <ArticleBody article={articleDetails} User={userDetails}/> */}
 
     </div>
 
