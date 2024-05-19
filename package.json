@@ -20,8 +20,7 @@
     "@tiptap/starter-kit": "^2.3.2",
     "ant-design": "^1.0.0",
     "antd": "^5.17.2",
-    "axios": "^1.7.0",
-    "ldrs": "^1.0.1",
+    "axios": "^1.6.8",
     "lucide-react": "^0.378.0",
     "next": "14.2.2",
     "react": "^18.3.1",
@@ -31,7 +30,6 @@
     "slate-history": "^0.100.0",
     "slate-react": "^0.102.0",
     "strapi-plugin-rich-text": "^1.2.0",
-    "swr": "^2.2.5",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
