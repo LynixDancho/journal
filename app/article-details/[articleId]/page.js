@@ -45,8 +45,8 @@ ArticleApi.getArticleById(params?.articleId).then(res=>{
 
     <div className='pagecss'>
     <Articleinfo article={articleDetails}  User={userDetails} />
-      <Reader article = {articleDetails} User={userDetails} />
-    {/* <ArticleBody article={articleDetails} User={userDetails}/> */}
+      {/* <Reader article = {articleDetails} User={userDetails} /> */}
+    <ArticleBody article={articleDetails} User={userDetails}/>
 
     </div>
 

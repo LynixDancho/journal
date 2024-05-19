@@ -25,7 +25,9 @@ const Tiptap = ({ onChange, content }) => {
         openOnClick: false,
         autolink: true,
       }),
-      Image,
+      Image.configure({
+        allowBase64: true,
+      }),
       Underline,
     ],
     editorProps: {
@@ -36,41 +38,12 @@ const Tiptap = ({ onChange, content }) => {
     },
     onUpdate: ({ editor }) => {
       const htmlContent = editor.getHTML();
-      const jsonData = convertHtmlToJson(htmlContent);
-      handleChange(jsonData);
+     
+      handleChange(htmlContent );
     },
   });
 
-  const convertHtmlToJson = (html) => {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, 'text/html');
-    const body = doc.body;
-    
-    const convertNode = (node) => {
-      if (node.nodeType === Node.TEXT_NODE) {
-        return {
-          type: 'text',
-          text: node.textContent,
-        };
-      } else if (node.nodeType === Node.ELEMENT_NODE) {
-        const obj = {
-          type: node.tagName.toLowerCase(),
-          children: Array.from(node.childNodes).map(convertNode),
-        };
-
-        if (node.tagName.toLowerCase() === 'img') {
-          obj.image = {
-            url: node.src,
-            alternativeText: node.alt,
-          };
-        }
-
-        return obj;
-      }
-    };
-
-    return Array.from(body.childNodes).map(convertNode);
-  };
+ 
 
   return (
     <div className="w-full ml-1 px-2">
