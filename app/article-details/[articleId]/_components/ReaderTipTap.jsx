@@ -1,23 +1,26 @@
-import { EditorContent, useEditor } from '@tiptap/react';
+"use client";
+import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit';
 import Image from '@tiptap/extension-image';
 import Link from "@tiptap/extension-link";
 import Underline from "@tiptap/extension-underline";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
-export default function Reader({ article, User }) {
-  const [editable, setEditable] = useState(false);
-  const [content, setContent] = useState(null);
+function ReaderTipTap({ article }) {
+  const [editable, setEditable] = useState(false)
+  const [content, setContent] = useState('')
 
   useEffect(() => {
-    if (article && article.attributes && article?.attributes.Bbody) {
-      setContent(article.attributes.Bbody);
+    if (article && article.attributes && article.attributes.Bbody) {
+      setContent(article.attributes.Bbody)
     }
-  }, [article]);
+  }, [article])
+
+  console.log("From tiptap reader", article)
 
   const editor = useEditor({
     editable,
-    content: `${content}` || '', // Ensure the editor is initialized with content only when it's available
+    content: `${article.attributes.Bbody}`,
     extensions: [
       StarterKit,
       Link.configure({
@@ -29,20 +32,16 @@ export default function Reader({ article, User }) {
       }),
       Underline,
     ],
-  });
+  })
 
   useEffect(() => {
     if (editor) {
-      editor.setEditable(editable);
+      editor.setEditable(editable)
     }
-  }, [editor, editable]);
-
-  if (!article) {
-    return <div>Loading article...</div>;
-  }
+  }, [editor, editable])
 
   if (!editor) {
-    return <div>Loading editor...</div>;
+    return <div>Loading editor...</div>
   }
 
   return (
@@ -58,5 +57,7 @@ export default function Reader({ article, User }) {
       </div>
       <EditorContent editor={editor} />
     </>
-  );
+  )
 }
+
+export default ReaderTipTap

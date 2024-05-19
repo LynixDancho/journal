@@ -1,60 +1,56 @@
-'use client'
+"use client";
 
-import BreadCrumb from '../../_components/BreadCrumb.jsx'
-import ArticleApi from '../../_utils/ArticleApi'
-import React, { useEffect, useState } from 'react'
- import Articleinfo from './_components/Articleinfo'
-import ArticleBody from './_components/ArticleBody'
-import './this_area.css'
-import Reader from './_components/ReaderTipTap.jsx'
-import { usePathname } from 'next/navigation'
-function ArticleDetails({params}) {
-  const path =usePathname();
-  
-  const [articleDetails,setProductDetails]=useState({})
-  const[userDetails,setUserDetails]=useState({})
-  useEffect(()=>{
-    getArticleById_()
-},[params?.articleId])
-  const getArticleById_=()=>{
-ArticleApi.getArticleById(params?.articleId).then(res=>{
-   console.log('Article item', res.data.data)
-  setProductDetails(res.data.data)
-  ArticleApi.getUserById(res?.data.data.attributes.users_permissions_user.data.id).then(res=>{
+import BreadCrumb from "../../_components/BreadCrumb.jsx";
+import ArticleApi from "../../_utils/ArticleApi";
+import React, { useEffect, useState } from "react";
+import Articleinfo from "./_components/Articleinfo";
+import ArticleBody from "./_components/ArticleBody";
+import "./this_area.css";
+import ReaderTipTap from "./_components/ReaderTipTap.jsx";
+import { usePathname } from "next/navigation";
 
-    setUserDetails(res.data)
-    console.log("test ", res.data)
+function ArticleDetails({ params }) {
+  const path = usePathname();
 
+  const [articleDetails, setProductDetails] = useState(null);
+  const [userDetails, setUserDetails] = useState(null);
+  const [loading, setLoading] = useState(true); // Introduce loading state
 
+  useEffect(() => {
+    const fetchArticleData = async () => {
+      try {
+        const articleResponse = await ArticleApi.getArticleById(params?.articleId);
+        const userResponse = await ArticleApi.getUserById(
+          articleResponse?.data.data.attributes.users_permissions_user.data.id
+        );
 
-  })
- 
-})
+        setProductDetails(articleResponse.data.data);
+        setUserDetails(userResponse.data);
+      } catch (error) {
+        console.error('Error fetching article data:', error);
+      } finally {
+        setLoading(false); // Set loading to false once data is fetched
+      }
+    };
+
+    fetchArticleData();
+  }, [params?.articleId]);
+
+  if (loading) {
+    return <div>Loading...</div>; // Render a loading message or spinner while data is being fetched
   }
-   
-  
-
-
-
-
+  console.log(articleDetails)
 
   return (
-    <> <BreadCrumb  path={path}/>
-    
-     
-
-    <div className='pagecss'>
-    <Articleinfo article={articleDetails}  User={userDetails} />
-      {/* <Reader article = {articleDetails} User={userDetails} /> */}
-    <ArticleBody article={articleDetails} User={userDetails}/>
-
-    </div>
-
-
-
-   
+    <>
+      <BreadCrumb path={path} />
+      <div className="pagecss">
+        <Articleinfo article={articleDetails} User={userDetails} />
+        <ReaderTipTap article={articleDetails} />
+        {/* <ArticleBody article={articleDetails} User={userDetails}/> */}
+      </div>
     </>
-  )
+  );
 }
 
-export default ArticleDetails
+export default ArticleDetails;

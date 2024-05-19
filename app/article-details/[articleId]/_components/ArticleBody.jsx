@@ -32,7 +32,7 @@ function ArticleBody({article,User}) {
    </div>
      <div className='flex flex-row justify-between'> 
      <h1 className='font-bold mt-3 mb-3' >
-       {article?.attributes?.Title}
+       {article?.attributes?.Bbody}
    
      </h1>
      
