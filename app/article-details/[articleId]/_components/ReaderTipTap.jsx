@@ -6,16 +6,40 @@ import Link from '@tiptap/extension-link';
 import Underline from '@tiptap/extension-underline';
 import React, { useEffect, useState } from 'react';
 import "../this_area.css"
+import { useUser } from "@clerk/nextjs";
 
-function ReaderTipTap({ article }) {
+function ReaderTipTap({ article}) {
   const [editable, setEditable] = useState(false);
   const [content, setContent] = useState('');
+  const [content1, setContent1] = useState('');
+  const { isLoaded, isSignedIn, user } = useUser();
+  const [hasLoggedUser, setHasLoggedUser] = useState(false);
 
   useEffect(() => {
     if (article && article.attributes && article.attributes.Bbody) {
       setContent(article.attributes.Bbody);
     }
   }, [article]);
+  useEffect(() => {
+    if (!hasLoggedUser && isLoaded && isSignedIn) {
+      fetch(`http://localhost:1337/api/users?filters[email][$eq]=${user.primaryEmailAddress.emailAddress}`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Failed to fetch users');
+    }
+    return response.json();
+  })
+  .then(users => {
+    console.log('Users with email  :', users);
+  })
+  .catch(error => {
+    console.error('Error fetching users:', error);
+  });
+
+       
+    }
+  }, [isLoaded, isSignedIn, hasLoggedUser]);
+ 
 
   const editor = useEditor({
     editable,

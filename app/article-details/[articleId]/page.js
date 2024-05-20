@@ -8,9 +8,12 @@ import ArticleBody from "./_components/ArticleBody";
 import "./this_area.css";
 import ReaderTipTap from "./_components/ReaderTipTap.jsx";
 import { usePathname } from "next/navigation";
-
-function ArticleDetails({ params }) {
+ function ArticleDetails({ params }) {
   const path = usePathname();
+
+
+   
+
 
   const [articleDetails, setProductDetails] = useState(null);
   const [userDetails, setUserDetails] = useState(null);
@@ -46,7 +49,7 @@ function ArticleDetails({ params }) {
       <BreadCrumb path={path} />
       <div className="pagecss">
         <Articleinfo article={articleDetails} User={userDetails} />
-        <ReaderTipTap  article={articleDetails} />
+        <ReaderTipTap  article={articleDetails}  />
       </div>
     </>
   );

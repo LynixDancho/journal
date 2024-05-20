@@ -1,13 +1,16 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Component } from "react";
 import dynamic from "next/dynamic";
 import { DatePicker, Upload, Select } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { useUser } from "@clerk/nextjs";
+import { waveform } from "ldrs";
 
 const Tiptap = dynamic(() => import("./TipTap"), { ssr: false });
 
 function Todo() {
+  waveform.register();
+
   const { isLoaded, isSignedIn, user } = useUser();
   const [hasLoggedUser, setHasLoggedUser] = useState(false);
   const [isTiptapLoaded, setIsTiptapLoaded] = useState(false);
@@ -25,19 +28,12 @@ function Todo() {
   const [articlePicture, setArticlePicture] = useState(null);
   const [dateData, handleDateChange] = useState(null);
   const [content, setContent] = useState("");
-  const fs = require('fs');
 
-  const handleFileChange = (event) => {
-    setArticlePicture(event.target.files[0]);
-  };
-
- 
-
+  if (articlePicture) console.log(articlePicture);
   const handleContentChange = (newContent) => {
     setContent(newContent);
   };
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -45,34 +41,6 @@ function Todo() {
       alert("Please fill in all fields.");
       return;
     }
-    
-    
-  
-console.log(articlePicture)
-
-if(articlePicture){
-              let test = new FormData();
-              test.append('files', fs.createReadStream(articlePicture));
- try {
-      const response = await fetch("http://localhost:1337/api/upload", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: test
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to create article");
-      }
-
-      alert("Image Uploaded successfully!");
-    } catch (error) {
-      console.error("Error creating Image:", error);
-    }
-    
-
-      
-}
-
 
     const article = {
       data: {
@@ -86,9 +54,8 @@ if(articlePicture){
       },
     };
     console.log(article);
-   
 
-    setFormData(article);
+    setFormData(articlePicture);
 
     try {
       const response = await fetch("http://localhost:1337/api/articles", {
@@ -105,22 +72,20 @@ if(articlePicture){
     } catch (error) {
       console.error("Error creating article:", error);
     }
-    
-
-
-
-
   };
 
-  // Check if Tiptap is loaded
-  useEffect(() => {
+   useEffect(() => {
     import("./TipTap").then(() => {
       setIsTiptapLoaded(true);
     });
   }, []);
 
   if (!isTiptapLoaded) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <l-waveform size="35" stroke="3.5" speed="1" color="black"></l-waveform>
+      </div>
+    );
   }
 
   return (
@@ -164,34 +129,54 @@ if(articlePicture){
               <Select.Option value="Physics">Physics</Select.Option>
               <Select.Option value="Chemistry">Chemistry</Select.Option>
               <Select.Option value="Biology">Biology</Select.Option>
-              <Select.Option value="Earth Sciences">Earth Sciences</Select.Option>
-              <Select.Option value="Environmental Sciences">Environmental Sciences</Select.Option>
-              <Select.Option value="Astronomy and Astrophysics">Astronomy and Astrophysics</Select.Option>
+              <Select.Option value="Earth Sciences">
+                Earth Sciences
+              </Select.Option>
+              <Select.Option value="Environmental Sciences">
+                Environmental Sciences
+              </Select.Option>
+              <Select.Option value="Astronomy and Astrophysics">
+                Astronomy and Astrophysics
+              </Select.Option>
               <Select.Option value="Mathematics">Mathematics</Select.Option>
-              <Select.Option value="Computer Science">Computer Science</Select.Option>
+              <Select.Option value="Computer Science">
+                Computer Science
+              </Select.Option>
               <Select.Option value="Statistics">Statistics</Select.Option>
-              <Select.Option value="Mechanical Engineering">Mechanical Engineering</Select.Option>
-              <Select.Option value="Electrical Engineering">Electrical Engineering</Select.Option>
-              <Select.Option value="Civil Engineering">Civil Engineering</Select.Option>
-              <Select.Option value="Computer Engineering">Computer Engineering</Select.Option>
-              <Select.Option value="Aerospace Engineering">Aerospace Engineering</Select.Option>
-              <Select.Option value="Chemical Engineering">Chemical Engineering</Select.Option>
+              <Select.Option value="Mechanical Engineering">
+                Mechanical Engineering
+              </Select.Option>
+              <Select.Option value="Electrical Engineering">
+                Electrical Engineering
+              </Select.Option>
+              <Select.Option value="Civil Engineering">
+                Civil Engineering
+              </Select.Option>
+              <Select.Option value="Computer Engineering">
+                Computer Engineering
+              </Select.Option>
+              <Select.Option value="Aerospace Engineering">
+                Aerospace Engineering
+              </Select.Option>
+              <Select.Option value="Chemical Engineering">
+                Chemical Engineering
+              </Select.Option>
               <Select.Option value="Medicine">Medicine</Select.Option>
               <Select.Option value="Pharmacology">Pharmacology</Select.Option>
               <Select.Option value="Public Health">Public Health</Select.Option>
               <Select.Option value="Nursing">Nursing</Select.Option>
               <Select.Option value="Dentistry">Dentistry</Select.Option>
-              <Select.Option value="Veterinary Science">Veterinary Science</Select.Option>
+              <Select.Option value="Veterinary Science">
+                Veterinary Science
+              </Select.Option>
             </Select>
           </div>
+          
 
           {/* <Upload
             onChange={(info) => setArticlePicture(info.file)}
             className="ml-3"
-            beforeUpload={beforeUpload}
             listType="picture-card"
-         
-            
           >
             <button
               style={{
@@ -210,9 +195,6 @@ if(articlePicture){
               </div>
             </button>
           </Upload> */}
-          <div>
-      <input type="file" onChange={handleFileChange} />
-     </div>
         </div>
 
         <Tiptap

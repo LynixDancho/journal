@@ -3,6 +3,8 @@ import { auth, currentUser } from "@clerk/nextjs/server";
 
 async function AdduserstoSTrapi() {
   const user = await currentUser();
+  const path = usePathname();
+
 
   console.log(user);
 
@@ -19,6 +21,10 @@ async function AdduserstoSTrapi() {
       email: user.emailAddresses[0].emailAddress, // If applicable, use Clerk user email
       password: user.password? user.password : user.id,
     };
+  
+
+
+
     fetch("http://localhost:1337/api/auth/local/Register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
