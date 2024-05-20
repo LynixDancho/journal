@@ -46,8 +46,7 @@ function ArticleDetails({ params }) {
       <BreadCrumb path={path} />
       <div className="pagecss">
         <Articleinfo article={articleDetails} User={userDetails} />
-        <ReaderTipTap article={articleDetails} />
-        {/* <ArticleBody article={articleDetails} User={userDetails}/> */}
+        <ReaderTipTap  article={articleDetails} />
       </div>
     </>
   );

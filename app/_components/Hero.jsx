@@ -18,7 +18,7 @@ function Hero() {
       <h1 className="text-3xl font-extrabold sm:text-5xl">
 
 Expand The Knowledge
-        <strong className="block font-extrabold text-rose-700"> Use Nibras  </strong>
+        <strong className="block font-extrabold text-rose-700"> Use NEWGATE  </strong>
       </h1>
 
       <p className="mt-4 max-w-lg sm:text-xl/relaxed">

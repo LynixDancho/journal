@@ -96,7 +96,7 @@ if (isLoading) {
           <Link href="/PostArticle" className="hidden rounded-md mr-5 bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-600/75 sm:block" >
             Post Article
           </Link>
-          <UserButton afterSignOutUrl='/' />
+          <UserButton   afterSignOutUrl='/' />
         </div>
       )}
 

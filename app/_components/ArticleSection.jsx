@@ -28,8 +28,13 @@ import ArticleApi from '../_utils/ArticleApi'
 
     <div className='px-10 md:px-20'>
     <h2 className='my-9 text-2xl font-sans font-bold'>Check Our Latest Articles</h2>
+    {!articleList? (     <div>loading..</div>
 
-      <ArticleList articleList={articleList}/></div>
+) : (
+  <ArticleList articleList={articleList}/>
+
+)}
+</div>
  </>
   )
 }

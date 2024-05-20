@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import dynamic from "next/dynamic";
 import { DatePicker, Upload, Select } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
@@ -26,11 +25,19 @@ function Todo() {
   const [articlePicture, setArticlePicture] = useState(null);
   const [dateData, handleDateChange] = useState(null);
   const [content, setContent] = useState("");
+  const fs = require('fs');
+
+  const handleFileChange = (event) => {
+    setArticlePicture(event.target.files[0]);
+  };
+
+ 
 
   const handleContentChange = (newContent) => {
     setContent(newContent);
   };
 
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -38,6 +45,34 @@ function Todo() {
       alert("Please fill in all fields.");
       return;
     }
+    
+    
+  
+console.log(articlePicture)
+
+if(articlePicture){
+              let test = new FormData();
+              test.append('files', fs.createReadStream(articlePicture));
+ try {
+      const response = await fetch("http://localhost:1337/api/upload", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: test
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to create article");
+      }
+
+      alert("Image Uploaded successfully!");
+    } catch (error) {
+      console.error("Error creating Image:", error);
+    }
+    
+
+      
+}
+
 
     const article = {
       data: {
@@ -46,18 +81,17 @@ function Todo() {
         UserName: user.fullName,
         Email: user.primaryEmailAddress.emailAddress,
         Type: selectValue,
-        articlePicture: articlePicture,
         DateOfSubmitting: dateData.$d, // assuming dateData is a moment object
-       
         publishedAt: null,
       },
     };
-    console.log(article)
+    console.log(article);
+   
 
     setFormData(article);
 
     try {
-      const response = await fetch("http://localhost:1337/api/articles  ", {
+      const response = await fetch("http://localhost:1337/api/articles", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(article),
@@ -71,6 +105,11 @@ function Todo() {
     } catch (error) {
       console.error("Error creating article:", error);
     }
+    
+
+
+
+
   };
 
   // Check if Tiptap is loaded
@@ -104,7 +143,6 @@ function Todo() {
               id="articleName"
               value={articleName}
               onChange={(e) => setArticleName(e.target.value)}
-               
               placeholder="Article Name"
             />
           </div>
@@ -112,7 +150,7 @@ function Todo() {
             <label className="mr-1 mb-2" htmlFor="datePicker">
               Date Of Edition:
             </label>
-            <DatePicker   onChange={handleDateChange} />
+            <DatePicker onChange={handleDateChange} />
           </div>
           <div className="flex ml-2 ">
             <label className="mr-2 mb-2" htmlFor="selectType">
@@ -121,7 +159,6 @@ function Todo() {
             <Select
               className="w-[400px]"
               onChange={handleSelectChange}
-               
               placeholder="Select article type"
             >
               <Select.Option value="Physics">Physics</Select.Option>
@@ -148,12 +185,13 @@ function Todo() {
             </Select>
           </div>
 
-          <Upload
+          {/* <Upload
             onChange={(info) => setArticlePicture(info.file)}
             className="ml-3"
-            action="/upload.do"
+            beforeUpload={beforeUpload}
             listType="picture-card"
-             
+         
+            
           >
             <button
               style={{
@@ -171,7 +209,10 @@ function Todo() {
                 Cover For Article
               </div>
             </button>
-          </Upload>
+          </Upload> */}
+          <div>
+      <input type="file" onChange={handleFileChange} />
+     </div>
         </div>
 
         <Tiptap
