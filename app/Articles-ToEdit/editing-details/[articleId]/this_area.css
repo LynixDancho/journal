@@ -1,0 +1,90 @@
+ 
+.butttons{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+ 
+    min-width: 800px;
+
+
+
+}
+.pagecss{
+
+    display: flex;
+     margin-top: 10px;
+    padding: 1%;
+ }
+.PictureAndBio{
+
+    display: flex;
+    flex-direction: column;
+     
+ }
+ .ReaderTipTapthings{
+    margin-left: 7%;
+    padding: 2%;
+     
+
+ }
+ 
+ .pictureofthearticle{
+
+    border-radius: 15%;
+
+ }
+.ThepictureandBody{
+flex-direction: column;
+display: flex;
+
+}
+.avatar{
+     width: 9rem/* 208px */;
+    height: 9rem/* 208px */;
+    border-radius: 50%;
+    margin-bottom: 15px;
+
+}
+
+
+
+
+
+.username_in_articlBody{
+    display: none;
+
+
+}
+
+
+
+
+
+
+@media (max-width: 768px) {
+        .avatar{
+           display: none;
+
+
+        }
+        .username_in_articlBody{
+            display: block;
+
+        }
+        .pagecss{
+            grid-auto-flow: row;
+            padding: 5px;
+            padding-bottom: 20%;
+
+        }
+        
+        .SubmittedBy{
+            display: none;
+        }
+        .articlebody{
+            font-size: 15px;
+            font-weight: medium;
+
+
+        }
+  }

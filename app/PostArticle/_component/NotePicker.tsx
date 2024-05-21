@@ -8,12 +8,21 @@ import { waveform } from "ldrs";
 
 const Tiptap = dynamic(() => import("./TipTap"), { ssr: false });
 
+
+async function fetchUserIdByEmail(email) {
+  const response = await fetch(`http://localhost:1337/api/users?filters[email][$eq]=${email}`);
+  const users = await response.json();
+  console.log(users[0])
+    return users[0].id;  
+   
+}
 function Todo() {
   waveform.register();
 
   const { isLoaded, isSignedIn, user } = useUser();
   const [hasLoggedUser, setHasLoggedUser] = useState(false);
   const [isTiptapLoaded, setIsTiptapLoaded] = useState(false);
+  
 
   useEffect(() => {
     if (!hasLoggedUser && isLoaded && isSignedIn) {
@@ -42,6 +51,8 @@ function Todo() {
       return;
     }
 
+    const userId = await fetchUserIdByEmail(user.primaryEmailAddress.emailAddress);
+
     const article = {
       data: {
         Title: articleName,
@@ -50,7 +61,8 @@ function Todo() {
         Email: user.primaryEmailAddress.emailAddress,
         Type: selectValue,
         DateOfSubmitting: dateData.$d, // assuming dateData is a moment object
-        publishedAt: null,
+        isPublished : false,   
+        users_permissions_user: userId 
       },
     };
     console.log(article);

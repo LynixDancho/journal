@@ -4,11 +4,37 @@ import Link from 'next/link'
  import { UserButton } from "@clerk/nextjs";
  import { useUser } from "@clerk/nextjs";
     function Header() {
-  const { user } = useUser();
+   const { isLoaded, isSignedIn, user } = useUser();
+   const [hasLoggedUser, setHasLoggedUser] = useState(false);
+   const[users, setuserInformation] = useState()
+
+
  const [isLoggedIn , setIsLoggedIn] = useState(false)
 useEffect(()=>{
   setIsLoggedIn(window.location.href.toString().includes('sign-in' ))  
 })
+ 
+
+useEffect(() => {
+  if (!hasLoggedUser && isLoaded && isSignedIn) {
+    fetch(`http://localhost:1337/api/users?filters[email][$eq]=${user.primaryEmailAddress.emailAddress}`)
+.then(response => {
+  if (!response.ok) {
+    throw new Error('Failed to fetch users');
+  }
+  return response.json();
+})
+.then(users => {
+   setuserInformation(users)
+ })
+.catch(error => {
+  console.error('Error fetching users:', error);
+});
+
+     
+  }
+}, [isLoaded, isSignedIn, hasLoggedUser]);
+
 
 
 const [isLoading, setIsLoading] = useState(true);
@@ -21,7 +47,7 @@ useEffect(() => {
   return () => clearTimeout(delay);
 }, []); // Run this effect only once on component mount
 
-if (isLoading) {
+if (isLoading | !users) {
   // Render a loading state while waiting for the delay
   return <div><header className="bg-white">
       
@@ -55,7 +81,7 @@ if (isLoading) {
 }
 
 
-  return   !isLoggedIn &&(
+ return   !isLoggedIn &&(
     <header className="bg-white">
       
       <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
@@ -82,6 +108,17 @@ if (isLoading) {
           </nav>
 
           <div className="flex items-center gap-4">
+          {users[0]?.IsEditor? (
+        <Link
+          href="/Articles-ToEdit"
+          className="hidden rounded-md mr-5 bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-600/75 sm:block"
+            >
+
+              EditArticles
+          </Link>
+      ) : (
+        <div className="hidden"></div>
+      )}
           {!user ? (
         <div className="sm:flex sm:gap-4">
           <a className="block rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700" href="/sign-in">
@@ -99,6 +136,8 @@ if (isLoading) {
           <UserButton   afterSignOutUrl='/' />
         </div>
       )}
+      
+ 
 
             <button className="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden">
               <span className="sr-only">Toggle menu</span>
@@ -111,9 +150,8 @@ if (isLoading) {
       </div>
     </header>
   );
+ 
 }
-
 export default Header;
 
 
- 

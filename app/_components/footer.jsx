@@ -3,7 +3,7 @@ import Link from 'next/link'
 function Footer() {
   return (
 
-<footer className="bg-gray-100">
+<footer className="bg-gray-100 mt-[500px]">
   <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
     <div className="flex justify-center text-teal-600">
     <Link  className="block text-teal-600 font-sans tracking-6    text-3xl font-medieum" href="/">

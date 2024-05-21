@@ -23,6 +23,7 @@ import { usePathname } from "next/navigation";
     const fetchArticleData = async () => {
       try {
         const articleResponse = await ArticleApi.getArticleById(params?.articleId);
+   
         const userResponse = await ArticleApi.getUserById(
           articleResponse?.data.data.attributes.users_permissions_user.data.id
         );
@@ -37,12 +38,14 @@ import { usePathname } from "next/navigation";
     };
 
     fetchArticleData();
-  }, [params?.articleId]);
 
+
+  }, [params?.articleId]);
+ 
   if (loading) {
     return <div>Loading...</div>; // Render a loading message or spinner while data is being fetched
   }
-  console.log(articleDetails)
+
 
   return (
     <>
