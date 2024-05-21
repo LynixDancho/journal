@@ -29,8 +29,7 @@ import React, { useEffect, useState } from "react";
         );
 
         setUserDetails(userResponse.data);
-        console.log(userDetails)
-      } catch (error) {
+       } catch (error) {
         console.error('Error fetching article data:', error);
       } finally {
         setLoading(false); // Set loading to false once data is fetched

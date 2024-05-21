@@ -21,8 +21,8 @@ function ReaderTipTap({ article }) {
 
   useEffect(() => {
     if (article && article.attributes && article.attributes.Bbody) {
-      setContent(article.attributes.Bbody);
- 
+      setContent(article);
+  
     }
   }, [article]);
   useEffect(() => {
@@ -74,6 +74,8 @@ function ReaderTipTap({ article }) {
     }
   }, [editor, editable]);
 
+   console.log(editorComment)
+
   if (!editor) {
     return <div className="m-10">Loading editor...</div>;
   }
@@ -87,7 +89,7 @@ function ReaderTipTap({ article }) {
     };
      
     try {
-      const response = await fetch(`http://localhost:1337/api/articles/${article.id}`, {
+      const response = await fetch(`http://localhost:1337/api/articles/${content.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(article),
@@ -101,7 +103,7 @@ function ReaderTipTap({ article }) {
     } catch (error) {
       console.error("Error creating article:", error);
     }
-
+    console.log(article)
     setClicked(true);
     console.log('Button clicked!');
    };
