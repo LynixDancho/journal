@@ -20,28 +20,58 @@ function Todo() {
   waveform.register();
 
   const { isLoaded, isSignedIn, user } = useUser();
-  const [hasLoggedUser, setHasLoggedUser] = useState(false);
+  const [hasLoggedUser, setHasLoggedUser] = useState(true);
   const [isTiptapLoaded, setIsTiptapLoaded] = useState(false);
   
 
-  useEffect(() => {
-    if (!hasLoggedUser && isLoaded && isSignedIn) {
-      console.log(user);
-      setHasLoggedUser(true);
-    }
-  }, [isLoaded, isSignedIn, hasLoggedUser]);
-
-  const [formData, setFormData] = useState(null);
-  const [articleName, setArticleName] = useState("");
+ const [Description , setArticleDescription] =useState("")
+   const [articleName, setArticleName] = useState("");
   const [selectValue, handleSelectChange] = useState(null);
-  const [articlePicture, setArticlePicture] = useState(null);
-  const [dateData, handleDateChange] = useState(null);
+   const [dateData, handleDateChange] = useState(null);
   const [content, setContent] = useState("");
+  const [file, setFile] = useState(null);
+  const [isUploading, setIsUploading] = useState(false);
+  const [imageId, setImageId] = useState(null);
 
-  if (articlePicture) console.log(articlePicture);
-  const handleContentChange = (newContent) => {
+   const handleContentChange = (newContent) => {
     setContent(newContent);
   };
+
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+  const handleImageUpload = async () => {
+    if (!file) return;
+
+    setIsUploading(true);
+
+     
+
+    const formData = new FormData();
+    formData.append('files', file);
+
+    try {
+      const response = await fetch('http://localhost:1337/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error('Image upload failed');
+      }
+
+      const result = await response.json();
+      setImageId(result[0]); // Save the uploaded image ID
+      console.log('Image uploaded successfully:', result[0]);
+    } catch (error) {
+      console.error('Error uploading image:', error);
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -60,15 +90,17 @@ function Todo() {
         UserName: user.fullName,
         Email: user.primaryEmailAddress.emailAddress,
         Type: selectValue,
-        DateOfSubmitting: dateData.$d, // assuming dateData is a moment object
+        Description_Of_The_Research:Description,
+
+        DateOfSubmitting: dateData.$d, 
+        ImagesOfResearch:imageId,
         isPublished : false,   
         users_permissions_user: userId 
       },
     };
     console.log(article);
 
-    setFormData(articlePicture);
-
+ 
     try {
       const response = await fetch("http://localhost:1337/api/articles", {
         method: "POST",
@@ -94,24 +126,25 @@ function Todo() {
 
   if (!isTiptapLoaded) {
     return (
-      <div>
-        <l-waveform size="35" stroke="3.5" speed="1" color="black"></l-waveform>
-      </div>
+      
+       <div className="flex justify-center h-screen w-full items-center">  <l-waveform size="35" stroke="3.5" speed="1" color="black"></l-waveform></div>
+      
     );
   }
 
   return (
-    <div>
+    <div className="flex justify-center"    >
       <form
         suppressHydrationWarning
-        className="max-w-3xl w-full grid place-items-center pt-10 mb-10"
+        className="max-w-3xl w-full grid place-items-center pt-10 mb-10
+        "
         onSubmit={handleSubmit}
       >
-        <div className="flex flex-col ml-3 p-14 px-4 py-3 justify-start rounded-bt-md border-b border-r border-t border-l border-gray-700 text-black items-start w-full gap-3 font-medium text-[16px] pt-4 rounded-bl-md rounded-br-md outline-none">
-          <h1 className="mb-2 ml-2">Article Post</h1>
+        <div className="flex flex-col ml-3 rounded-tl-md mb-2 rounded-tr-md align-top p-14 px-4 py-3 justify-start rounded-bt-md border-b border-r border-t border-l border-gray-700 text-black items-start w-full gap-3 font-medium text-[16px] pt-4 rounded-bl-md rounded-br-md outline-none">
+          <h1 className=" ">Article Post</h1>
 
-          <div className="ml-2 mb-6">
-            <label className="mr-1 mb-2" htmlFor="articleName">
+          <div className=" ">
+            <label className=" " htmlFor="articleName">
               Article Name:
             </label>
             <input
@@ -122,7 +155,18 @@ function Todo() {
               onChange={(e) => setArticleName(e.target.value)}
               placeholder="Article Name"
             />
+            
           </div>
+          <div className="flex align-top">  <label className="mr-1 mb-2" htmlFor="Description">
+               Description  :
+            </label>
+            <textarea
+              className="border border-t-gray-700 border-gray-700 rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring focus:border-blue-300"
+               id="Description"
+              value={Description}
+              onChange={(e) => setArticleDescription(e.target.value)}
+              placeholder="  Description  :"
+            /></div>
           <div className="ml-2 mb-6">
             <label className="mr-1 mb-2" htmlFor="datePicker">
               Date Of Edition:
@@ -184,42 +228,21 @@ function Todo() {
             </Select>
           </div>
           
-
-          {/* <Upload
-            onChange={(info) => setArticlePicture(info.file)}
-            className="ml-3"
-            listType="picture-card"
-          >
-            <button
-              style={{
-                border: 0,
-                background: "none",
-              }}
-              type="button"
-            >
-              <PlusOutlined />
-              <div
-                style={{
-                  marginTop: 8,
-                }}
-              >
-                Cover For Article
-              </div>
-            </button>
-          </Upload> */}
+          <div className="flex">
+           <input type="file"   onChange={handleFileChange} />
+        <button className="hidden rounded-md mr-5 bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-600/75 sm:block" onClick={handleImageUpload} disabled={isUploading}>
+          {isUploading ? 'Uploading...' : 'Upload Image'}
+        </button>
         </div>
-
+        </div>
+      
         <Tiptap
+
           content={content}
           onChange={(newContent) => handleContentChange(newContent)}
         />
-
-        <button
-          type="submit"
-          className="px-4 bg-sky-700 text-white py-2 rounded-md"
-        >
-          Add
-        </button>
+ 
+        
       </form>
     </div>
   );

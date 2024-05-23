@@ -7,6 +7,7 @@ import Underline from '@tiptap/extension-underline';
 import React, { useEffect, useState } from 'react';
 import "../this_area.css"
 import { useUser } from "@clerk/nextjs";
+import { waveform } from "ldrs";
 
 function ReaderTipTap({ article}) {
   const [editable, setEditable] = useState(false);
@@ -14,6 +15,7 @@ function ReaderTipTap({ article}) {
   const [content1, setContent1] = useState('');
   const { isLoaded, isSignedIn, user } = useUser();
   const [hasLoggedUser, setHasLoggedUser] = useState(false);
+  waveform.register();
 
   useEffect(() => {
     if (article && article.attributes && article.attributes.Bbody) {
@@ -29,9 +31,7 @@ function ReaderTipTap({ article}) {
     }
     return response.json();
   })
-  .then(users => {
-    console.log('Users with email  :', users);
-  })
+  
   .catch(error => {
     console.error('Error fetching users:', error);
   });
@@ -64,7 +64,7 @@ function ReaderTipTap({ article}) {
   }, [editor, editable]);
 
   if (!editor) {
-    return <div className="m-10">Loading editor...</div>;
+    return <div className="flex justify-center h-screen w-full items-center">  <l-waveform size="35" stroke="3.5" speed="1" color="black"></l-waveform></div>;
   }
 
   return (

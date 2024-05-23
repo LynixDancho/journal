@@ -16,7 +16,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
 
-    <ClerkProvider>
+    <ClerkProvider secretKey={process.env.CLERK_SECRET_KEY}   
+ 
+   >
     <html lang="en">
       <body className={inter.className}>
  

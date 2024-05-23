@@ -1,26 +1,22 @@
- "use client"
- import React from 'react'
+"use client"
+import React from 'react'
 import Image from 'next/image'
 import '../this_area.css'
-import { useEffect,useState } from 'react'
-  
+
 function Articleinfo({article,User}) {
- 
-
-
-  return (<>
+   return (<>
     <div className='PictureAndBio'> 
     {article   ?    <img
-  src={User?.avatar?.url  }
+  src={User?.avatar?.url  } 
    
   className="avatar shadow-lg"
- alt="Avatar"
+ alt="There is no avatar"
 /> 
 
 :
 <div className='w-[200px} h-[225px]
 avatar
-
+ml-2
 bg-slate-200 rounded-lg animate-pulse
 
 '
@@ -28,10 +24,10 @@ bg-slate-200 rounded-lg animate-pulse
 
 
 } 
- 
 
 
- 
+
+
 <h1 className=' SubmittedBy    text-xl font-bold dark:text-white  '>Submitted By : {User?.username}</h1>
 
     </div>

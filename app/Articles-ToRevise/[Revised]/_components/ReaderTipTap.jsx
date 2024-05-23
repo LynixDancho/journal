@@ -7,7 +7,7 @@ import Underline from "@tiptap/extension-underline";
 import React, { useEffect, useState } from "react";
 import "../this_area.css";
 import { useUser } from "@clerk/nextjs";
-import { waveform } from "ldrs";
+import Toolbar from "@/PostArticle/_component/Toolbar";
 
 function ReaderTipTap({ article }) {
   const [editable, setEditable] = useState(false);
@@ -19,7 +19,6 @@ function ReaderTipTap({ article }) {
 
   const [clicked, setClicked] = useState(false);
 
-  waveform.register();
 
   useEffect(() => {
     if (article && article.attributes && article.attributes.Bbody) {
@@ -44,6 +43,7 @@ function ReaderTipTap({ article }) {
         });
     }
   }, [isLoaded, isSignedIn, hasLoggedUser]);
+ 
 
   const editor = useEditor({
     editable,
@@ -79,16 +79,14 @@ function ReaderTipTap({ article }) {
    console.log(editorComment)
 
   if (!editor) {
-    return  <div className="flex justify-center h-screen w-full items-center">  <l-waveform size="35" stroke="3.5" speed="1" color="black"></l-waveform></div>;
+    return <div className="flex justify-center h-screen w-full items-center">  <l-waveform size="35" stroke="3.5" speed="1" color="black"></l-waveform></div>;
   }
   const handleClick = async (event) => {
      event.stopPropagation();
      const article = {
       data: {
          Bbody: editorComment,
-         isPublished : true,  
-         IsSent : true 
-       },
+        },
     };
      
     try {
@@ -102,7 +100,7 @@ function ReaderTipTap({ article }) {
         throw new Error("Failed to create article");
       }
 
-      alert("Article Published successfully!");
+      alert("Article Revised  successfully!");
     } catch (error) {
       console.error("Error creating article:", error);
     }
@@ -111,35 +109,7 @@ function ReaderTipTap({ article }) {
     console.log('Button clicked!');
    };
 
-  const handleUnpublishing= async (event) => {
-    event.stopPropagation();
-    const article = {
-     data: {
-        Bbody: editorComment,
-        isPublished : false,  
-        IsSent : false 
-      },
-   };
-    
-   try {
-     const response = await fetch(`http://localhost:1337/api/articles/${content.id}`, {
-       method: "PUT",
-       headers: { "Content-Type": "application/json" },
-       body: JSON.stringify(article),
-     });
-
-     if (!response.ok) {
-       throw new Error("Failed to create article");
-     }
-
-     alert("Article Sent to revise !");
-   } catch (error) {
-     console.error("Error creating article:", error);
-   }
-   console.log(article)
-   setClicked(true);
-   console.log('Button clicked!');
-  }
+  
 
   return (
     <div className="ReaderTipTapthings">
@@ -179,32 +149,17 @@ function ReaderTipTap({ article }) {
         </button>
           
             </div>
-        <button
-        onClick={handleUnpublishing}
-  title="Add New"
-  className="ml-5 mb-4 group cursor-pointer outline-none "
->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="50px"
-    height="50px"
-    viewBox="0 0 24 24"
-    className="mb-5 stroke-red-400 fill-none group-hover:fill-red-800 group-active:stroke-red-200 group-active:fill-red-600 group-active:duration-0 duration-300"
-  >
-    <path
-      d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
-      strokeWidth="1.5"
-    ></path>
-    <path d="M8 12H16" strokeWidth="1.5"></path>
-    <path d="M12 16V8" strokeWidth="1.5"></path>
-  </svg>
-</button>
+      
 </div>
 
+    <div className="w-full ml-1 px-0">
+      <Toolbar editor={editor} content={content} />
+      <EditorContent style={{ whiteSpace: "pre-line" }} editor={editor} />
+    </div>
      
-      <EditorContent editor={editor} />
     </div>
   );
+  
 }
 
 export default ReaderTipTap;

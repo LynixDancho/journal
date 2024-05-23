@@ -33,7 +33,7 @@ const Tiptap = ({ onChange, content }) => {
     editorProps: {
       attributes: {
         class:
-          "flex flex-col px-4 py-3 justify-start border-b border-r border-l border-gray-700 text-black items-start w-full gap-3 font-medium text-[16px] pt-4 rounded-bl-md rounded-br-md outline-none",
+          "flex flex-col line-clamp-3 px-4 py-3 justify-start border-b border-r border-l border-gray-700 text-black items-start w-full gap-3 font-medium text-[16px] pt-4 rounded-bl-md  rounded-br-md outline-none",
       },
     },
     onUpdate: ({ editor }) => {
@@ -46,7 +46,7 @@ const Tiptap = ({ onChange, content }) => {
  
 
   return (
-    <div className="w-full ml-1 px-2">
+    <div className="w-full ml-1 px-0">
       <Toolbar editor={editor} content={content} />
       <EditorContent style={{ whiteSpace: "pre-line" }} editor={editor} />
     </div>
