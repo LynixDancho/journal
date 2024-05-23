@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 async function fetchArticles() {
-  const response = await fetch("http://localhost:1337/api/articles?populate=*", {
+  const response = await fetch("http://localhost:1337/api/articles?populate=*", { cache: 'no-store' ,
     method: "GET",
     headers: {
       'Content-Type': 'application/json',
