@@ -2,7 +2,7 @@ import React from 'react'
  import Link from 'next/link';
 import Image from 'next/image'
 
-function EditingItems({article}) {
+function ExploreItems({article}) {
   const dateStr = article?.attributes?.publishedAt;
   const date = new Date(dateStr);
   
@@ -60,7 +60,7 @@ function EditingItems({article}) {
 
   <div className="sm:flex sm:items-end sm:justify-end">
     <a
-      href={`/Articles-ToEdit/editing-details/${article?.id}`}
+      href={`/article-details/${article?.id}`}
       className="block bg-teal-300  px-5 py-3 text-center text-xs font-bold uppercase  text-white  transition hover:bg-teal-400"
     >
       Read Article
@@ -71,4 +71,4 @@ function EditingItems({article}) {
   )
   }
   
-  export default EditingItems
+  export default ExploreItems

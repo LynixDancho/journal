@@ -1,10 +1,9 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import ArticleList from './ArticleList'
-import ArticleApi from '../_utils/ArticleApi'
-import LikeList from "./LikeList"
- function ArticleSection() {
+ import ArticleApi from '../_utils/ArticleApi'
+import ExploreList from './ExploreList'
+ function ExploreSection() {
   const [type,setTypeList]=useState([])
   const [articleList,setArticleList]=useState([])
    useEffect(()=>{
@@ -32,19 +31,13 @@ import LikeList from "./LikeList"
     {!articleList? (     <div>loading..</div>
 
 ) : (
-  <ArticleList articleList={articleList}/>
-
-)}
-  <h2 className='my-9 text-2xl font-sans font-bold'>Check Most Popular Articles    </h2>
-    {!articleList? (     <div>loading..</div>
-
-) : (
-  <LikeList articleList={articleList}/>
+  <ExploreList articleList={articleList}/>
 
 )}
 </div>
+ 
  </>
   )
 }
 
-export default ArticleSection
+export default ExploreSection

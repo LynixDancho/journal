@@ -62,7 +62,7 @@ function Todo() {
 
       const result = await response.json();
       setImageId(result[0]); // Save the uploaded image ID
-      console.log('Image uploaded successfully:', result[0]);
+       alert('Image uploaded successfully:');
     } catch (error) {
       console.error('Error uploading image:', error);
     } finally {
