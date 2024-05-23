@@ -189,7 +189,7 @@ function ReaderTipTap({ article }) {
     width="50px"
     height="50px"
     viewBox="0 0 24 24"
-    className="mb-5 stroke-red-400 fill-none group-hover:fill-red-800 group-active:stroke-red-200 group-active:fill-red-600 group-active:duration-0 duration-300"
+    className="mb-2 stroke-red-400 fill-none group-hover:fill-red-800 group-active:stroke-red-200 group-active:fill-red-600 group-active:duration-0 duration-300"
   >
     <path
       d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
