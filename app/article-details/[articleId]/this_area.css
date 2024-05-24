@@ -8,6 +8,7 @@
     margin-left: 1rem;
     display: flex;
     flex-direction: column;
+    width:600px
      
  }
  .ReaderTipTapthings{
@@ -23,8 +24,8 @@
  }
 
 .avatar{
-     width: 9rem/* 208px */;
-    height: 9rem/* 208px */;
+     width: 10rem/* 208px */;
+    height: 10rem/* 208px */;
     border-radius: 50%;
     margin-bottom: 15px;
 
@@ -51,6 +52,7 @@
 
 
         }
+        
         .username_in_articlBody{
             display: block;
 

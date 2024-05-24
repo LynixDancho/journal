@@ -27,17 +27,17 @@ Expand The Knowledge
 
       <div className="mt-8 flex justify-center flex-wrap gap-4 text-center">
         <a
-          href="#"
+          href="/Main_Pages/Service"
           className="block w-full rounded bg-teal-600  px-12 py-3 text-sm font-medium text-white shadow hover:bg-teal-700  focus:outline-none focus:ring active:bg-teal-500  sm:w-auto"
         > 
           Get Started
         </a>
 
         <a
-          href="#"
+          href="/Main_Pages/About"
           className="block w-full rounded bg-white px-12 py-3 text-sm font-medium text-teal-600 shadow hover:text-teal-700 focus:outline-none focus:ring active:text-teal-500 sm:w-auto"
         >
-          Learn More
+           Contact Us
         </a>
       </div>
     </div>

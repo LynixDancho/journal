@@ -19,7 +19,8 @@
 
     display: flex;
     flex-direction: column;
-     
+    width:600px
+
  }
  .ReaderTipTapthings{
     margin-left: 7%;
@@ -39,10 +40,10 @@ display: flex;
 
 }
 .avatar{
-     width: 9rem/* 208px */;
-    height: 9rem/* 208px */;
-    border-radius: 50%;
-    margin-bottom: 15px;
+    width: 9rem/* 208px */;
+   height: 9rem/* 208px */;
+   border-radius: 50%;
+   margin-bottom: 15px;
 
 }
 

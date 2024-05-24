@@ -2,12 +2,45 @@
 import React from 'react'
 import Image from 'next/image'
 import '../this_area.css'
+ import { useEffect,useState } from 'react'
 
 function Articleinfo({article,User}) {
+  const [users,setData] = useState()
+  const targetEmail = User.email; 
+  const [matchedUser, setMatchedUser] = useState(null);
+
+ useEffect(()=>{
+   const getArticles = async () =>{
+     const response = await fetch(`/api/ClientAvatar`);
+     const userr = await response.json(); 
+ 
+     setData(userr.data);
+   }
+   getArticles();
+ 
+ },[])
+ useEffect(() => {
+   if (users) {
+     const matchUserByEmail = (email) => {
+       return users.find(user => 
+         user.emailAddresses && user.emailAddresses.some(e => e.emailAddress === email)
+       );
+     };
+
+     const matched = matchUserByEmail(targetEmail);
+     setMatchedUser(matched);
+   }
+ }, [users, targetEmail]);
+
+ if(!users) return (
+   <div className="flex justify-center h-screen w-full items-center">  <l-waveform size="35" stroke="3.5" speed="1" color="black"></l-waveform></div>
+ 
+ )
+
    return (<>
     <div className='PictureAndBio'> 
     {article   ?    <img
-  src={User?.avatar?.url  } 
+  src={matchedUser?.imageUrl  }
    
   className="avatar shadow-lg"
  alt="There is no avatar"
