@@ -92,17 +92,17 @@ export default async function Explore() {
 
         <div className="p-8 sm:p-16 lg:p-24">
           <h2 className="text-2xl font-bold sm:text-3xl">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, debitis.
+          Role Access and Assistance
           </h2>
 
           <p className="mt-4 text-gray-600">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, molestiae! Quidem est
-            esse numquam odio deleniti, beatae, magni dolores provident quaerat totam eos, aperiam
-            architecto eius quis quibusdam fugiat dicta.
+          For those interested in gaining editor or admin access to our platform, please contact us directly. Our team will assist you in setting up the appropriate permissions and ensure you have everything you need to perform your duties effectively.
+
+If you encounter any issues or have questions regarding your access, do not hesitate to reach out to our support team. We are here to help and ensure your experience with our platform is smooth and productive.
           </p>
 
           <a
-            href="#"
+            href="./About"
             className="mt-8 inline-block rounded border border-indigo-600 bg-indigo-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
           >
             Get in Touch
