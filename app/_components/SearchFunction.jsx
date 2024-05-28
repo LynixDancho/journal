@@ -9,8 +9,7 @@ function SearchFunction({getSearchResults}) {
     const router = useRouter()
     const [text, setText] = useState('')
     const [debouncedText] = useDebounce(text, 300)
-
-    useEffect(() => {
+     useEffect(() => {
         if (!debouncedText) {
             router.push(`/Main_Pages/Explore`)
         } else {
