@@ -60,7 +60,7 @@ function ReviewItems({article}) {
 
   <div className="sm:flex sm:items-end sm:justify-end">
     <a
-      href={`/Articles-ToRevise/ReviewDetails/${article?.id}`}
+      href={`/Articles-ToReview/${article?.id}`}
       className="block bg-teal-300  px-5 py-3 text-center text-xs font-bold uppercase  text-black  transition hover:bg-teal-400"
     >
       Read Article
