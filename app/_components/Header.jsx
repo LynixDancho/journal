@@ -99,7 +99,7 @@ function Header() {
                  </>
                 )}
                   {isReviewer && (
-                  <Link href="/reviews" className="hidden rounded-md mr-5 bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-600/75 sm:block">
+                  <Link href="/Articles-ToReview" className="hidden rounded-md mr-5 bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-600/75 sm:block">
                     Check  Articles
                   </Link>
                 )}
