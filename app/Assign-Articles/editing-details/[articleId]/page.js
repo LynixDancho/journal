@@ -2,14 +2,15 @@
 
 import ArticleApi from "../../../_utils/ArticleApi";
 import React, { useEffect, useState } from "react";
-  import { usePathname } from "next/navigation";
-  import Articleinfo from "./_components/Articleinfo";
-  import ReaderTipTap from "./_components/ReaderTipTap.jsx";
-
-
+import { usePathname } from "next/navigation";
+import AssignRole from "./_components/AssignRole.jsx";
+import Articleinfo from "./_components/Articleinfo";
+import { waveform } from "ldrs";
+import ReaderTipTap from "./_components/ReaderTipTap"
 
  function EditingDetails({ params }) {
   const path = usePathname();
+  waveform.register();
 
 
    
@@ -46,15 +47,17 @@ import React, { useEffect, useState } from "react";
  
 
   if (loading) {
-    return <div>Loading...</div>; // Render a loading message or spinner while data is being fetched
+    return  <div className="flex justify-center h-screen w-full items-center">  <l-waveform size="35" stroke="3.5" speed="1" color="black"></l-waveform></div> // Render a loading message or spinner while data is being fetched
   }
  
   return (
     <>
       <div className="pagecss">
 <Articleinfo article={articleDetails} User={userDetails} />
-<ReaderTipTap  article={articleDetails} User={userDetails} />
-</div>
+<ReaderTipTap article={articleDetails} User={userDetails}/>
+ <AssignRole article={articleDetails} User={userDetails}/>
+ 
+ </div>
     </>
   );
 }

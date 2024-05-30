@@ -2,7 +2,7 @@ import React from 'react'
  import Link from 'next/link';
 import Image from 'next/image'
 
-function EditingItems({article}) {
+function AssignItems({article}) {
   const dateStr = article?.attributes?.publishedAt;
   const date = new Date(dateStr);
   
@@ -19,10 +19,10 @@ function EditingItems({article}) {
 
 
   return (
-      <article className="flex bg-white transition hover:shadow-xl">
+ <article className="flex bg-white transition hover:shadow-xl">
 <div className="rotate-180 p-2 [writing-mode:_vertical-lr]">
-  <time
-    dateTime="2022-10-10"
+<time
+ dateTime="2022-10-10"
     className="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900"
   >
     <span>{year}</span>
@@ -60,10 +60,10 @@ function EditingItems({article}) {
 
   <div className="sm:flex sm:items-end sm:justify-end">
     <a
-      href={`/Articles-ToEdit/editing-details/${article?.id}`}
+      href={`/Assign-Articles/editing-details/${article?.id}`}
       className="block bg-teal-300  px-5 py-3 text-center text-xs font-bold uppercase  text-black  transition hover:bg-teal-400"
     >
-      Read Article
+        Assign Roles to this Article
     </a>
   </div>
 </div>
@@ -71,4 +71,4 @@ function EditingItems({article}) {
   )
   }
   
-  export default EditingItems
+  export default AssignItems

@@ -22,7 +22,7 @@ function ExploreItems({article}) {
       <article className="flex bg-white transition hover:shadow-xl">
 <div className="rotate-180 p-2 [writing-mode:_vertical-lr]">
   <time
-    datetime="2022-10-10"
+    dateTime="2022-10-10"
     className="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900"
   >
     <span>{year}</span>
@@ -61,7 +61,7 @@ function ExploreItems({article}) {
   <div className="sm:flex sm:items-end sm:justify-end">
     <a
       href={`/article-details/${article?.id}`}
-      className="block bg-teal-300  px-5 py-3 text-center text-xs font-bold uppercase  text-white  transition hover:bg-teal-400"
+      className="block bg-teal-300  px-5 py-3 text-center text-xs font-bold uppercase  text-black  transition hover:bg-teal-400"
     >
       Read Article
     </a>

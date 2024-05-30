@@ -8,6 +8,7 @@ function Header() {
   const { signOut } = useClerk();
   const [isEditor, setIsEditor] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isReviewer, setIsReviewer] = useState(false)
 
   useEffect(() => {
     if (isLoaded && typeof isSignedIn !== 'undefined' && isSignedIn && user) {
@@ -22,6 +23,7 @@ function Header() {
           const fetchedUser = data[0];
           if (fetchedUser) {
             setIsEditor(fetchedUser.IsEditor);
+            setIsReviewer(fetchedUser.isReviewer);
           }
           setIsLoading(false);
         })
@@ -87,8 +89,18 @@ function Header() {
                   Articles Pending
                 </Link>
                 {isEditor && (
+                  <> 
+                  <Link href="/Assign-Articles" className="hidden rounded-md mr-5 bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-600/75 sm:block">
+                    Assign Reviewer
+                  </Link>
                   <Link href="/Articles-ToEdit" className="hidden rounded-md mr-5 bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-600/75 sm:block">
-                    Edit Articles
+                   Approve Articles   
+                </Link>
+                 </>
+                )}
+                  {isReviewer && (
+                  <Link href="/reviews" className="hidden rounded-md mr-5 bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-600/75 sm:block">
+                    Check  Articles
                   </Link>
                 )}
                 <UserButton afterSignOutUrl="#" signOut={signOutAndReload} />
