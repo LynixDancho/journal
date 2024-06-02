@@ -1,7 +1,7 @@
 "use client"
  import {React,useState,useEffect} from 'react'
 import SelectReviewers from './SelectReviewers'
-function AssignRole({article}) {
+function AssignRole({article,User}) {
     const [users,setData] = useState()
 
     useEffect(()=>{
@@ -18,7 +18,7 @@ function AssignRole({article}) {
  
   return (
     <div>
-      <SelectReviewers article= {article}/>
+      <SelectReviewers article= {article} User={User}/>
    </div> )
 }
 

@@ -3,10 +3,7 @@ import { auth, currentUser } from "@clerk/nextjs/server";
  import { clerkClient } from "@clerk/nextjs/server"; 
 async function AdduserstoSTrapi() {
   const user = await currentUser();
-  const emailAddress = ['lynixsakara44@gmail.com'];
-
-  const response = await clerkClient.users.getUserList({emailAddress});
-  console.log(response)
+  
 
  
 

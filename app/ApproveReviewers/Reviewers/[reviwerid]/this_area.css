@@ -1,14 +1,5 @@
  
-.butttons{
-    display: flex;
-    align-items: center;
-    justify-content: end;
- 
-    min-width: 800px;
 
-
-
-}
 .pagecss{
 
     display: flex;
@@ -16,14 +7,14 @@
     padding: 1%;
  }
 .PictureAndBio{
-    min-width: 300px;
-
+    margin-left: 1rem;
     display: flex;
     flex-direction: column;
+    width:600px
+     
  }
  .ReaderTipTapthings{
     margin-left: 7%;
-    padding: 2%;
      
 
  }
@@ -33,16 +24,12 @@
     border-radius: 15%;
 
  }
-.ThepictureandBody{
-flex-direction: column;
-display: flex;
 
-}
 .avatar{
-    width: 9rem/* 208px */;
-   height: 9rem/* 208px */;
-   border-radius: 50%;
-   margin-bottom: 15px;
+     width: 10rem/* 208px */;
+    height: 10rem/* 208px */;
+    border-radius: 50%;
+    margin-bottom: 15px;
 
 }
 
@@ -67,6 +54,7 @@ display: flex;
 
 
         }
+        
         .username_in_articlBody{
             display: block;
 

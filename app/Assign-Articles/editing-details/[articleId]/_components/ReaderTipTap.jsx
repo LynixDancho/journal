@@ -18,7 +18,7 @@ function ReaderTipTap({ article }) {
 
 
   const [clicked, setClicked] = useState(false);
-
+ 
   waveform.register();
 
   useEffect(() => {

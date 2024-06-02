@@ -2,13 +2,23 @@
 import React from 'react'
 import Image from 'next/image'
 import '../this_area.css'
+import Comment from "../../../../Articles-ToReview/[Revised]/_components/Comment"
   import { useEffect,useState } from 'react'
 
 function Articleinfo({article,User}) {
   const [users,setData] = useState()
   const targetEmail = User.email; 
-  const [matchedUser, setMatchedUser] = useState(null);
+  const [comments, setComments] = useState([]);
 
+  const [matchedUser, setMatchedUser] = useState(null);
+  const addComment = () => {
+    const newComment = {
+      id: Date.now(),
+      text: "",
+      checked: false,
+    };
+    setComments([...comments, newComment]);
+  };
  useEffect(()=>{
    const getArticles = async () =>{
      const response = await fetch(`/api/ClientAvatar`);
@@ -62,6 +72,22 @@ bg-slate-200 rounded-lg animate-pulse
 
 
 <h1 className=' SubmittedBy    text-xl font-bold dark:text-white  '>Submitted By : {User?.username}</h1>
+
+<div className="mb-4 mt-4">
+          <button
+            onClick={addComment}
+            className="p-2 bg-green-500 text-white rounded-full"
+          >
+            + Add Comment
+          </button>
+        </div>
+{comments.map((comment, index) => (
+            <Comment
+              key={comment.id}
+              article={article}
+              User={User} // Pass User prop to Comment
+            />
+          ))}
      </div>
     </>
   )

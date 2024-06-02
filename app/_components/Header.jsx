@@ -80,14 +80,17 @@ function Header() {
           <div className="flex items-center  ">
             {isSignedIn ? (
               <>
-            
-                <div className="sm:flex sm:gap-2"></div>
-                <Link href="/PostArticle" className="hidden rounded-md mr-5 bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-600/75 sm:block">
+            {!isEditor && (
+                  <> 
+                 <Link href="/PostArticle" className="hidden rounded-md mr-5 bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-600/75 sm:block">
                   Post Article
                 </Link>
                 <Link href="/ISSent" className="hidden rounded-md mr-5 bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-600/75 sm:block">
                   Articles Pending
                 </Link>
+                 </>
+                )}
+                 
                 {isEditor && (
                   <> 
                   <Link href="/Assign-Articles" className="hidden rounded-md mr-5 bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-600/75 sm:block">
@@ -96,11 +99,19 @@ function Header() {
                   <Link href="/Articles-ToEdit" className="hidden rounded-md mr-5 bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-600/75 sm:block">
                    Approve Articles   
                 </Link>
+                <Link href="/ApproveReviewers" className="hidden rounded-md mr-5 bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-600/75 sm:block">
+                   Approve Reviewers   
+                </Link>
                  </>
                 )}
                   {isReviewer && (
                   <Link href="/Articles-ToReview" className="hidden rounded-md mr-5 bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-600/75 sm:block">
                     Check  Articles
+                  </Link>
+                )}
+                 {!isReviewer && !isEditor && (
+                  <Link href="/BecomeReviewer" className="hidden rounded-md mr-5 bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-600/75 sm:block">
+                    Become Reviewer
                   </Link>
                 )}
                 <UserButton afterSignOutUrl="#" signOut={signOutAndReload} />

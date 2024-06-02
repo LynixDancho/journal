@@ -16,6 +16,7 @@
     padding: 1%;
  }
 .PictureAndBio{
+    min-width: 300px;
 
     display: flex;
     flex-direction: column;

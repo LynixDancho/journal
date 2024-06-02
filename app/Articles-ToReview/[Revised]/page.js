@@ -40,9 +40,7 @@ import React, { useEffect, useState } from "react";
 
     fetchArticleData();
   }, [params?.articleId]);
-  console.log(params?.Revised)
-  console.log(articleDetails)
-   
+  
 
 
  

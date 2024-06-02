@@ -6,13 +6,15 @@ function SelectReviewers({ article }) {
 
   useEffect(() => {
     const getUsers = async () => {
-      const response = await fetch(`http://localhost:1337/api/users?populate=*&filters[Type][$eq]=Biology`);
+      const response = await fetch(`http://localhost:1337/api/users?populate=*&filters[Type][$eq]=${article.attributes?.Type}`);
       const userData = await response.json();
   
       setUsers(userData);
     }
     getUsers();
   }, []);
+
+  console.log(users)
 
   const handleUserSelect = (event, user) => {
     const isChecked = event.target.checked;
@@ -30,11 +32,11 @@ function SelectReviewers({ article }) {
   console.log(article.id)
 
   const handleRetrieveCheckedUsers = async () => {
-    const reviewerNames = selectedUsers.map(user => user.username).join(", "); // Join usernames into a single string
-    
+    const Emails = selectedUsers.map(user => user.email).join(", "); // Join usernames into a single string
+    console.log(Emails)
     const updatedArticle = {
-        data: {
-            Reviewers: reviewerNames // Send the joined string as Reviewers
+        data: { 
+            Reviewers:Emails  
         },
     };
 
