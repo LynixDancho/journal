@@ -138,8 +138,7 @@ function ReaderTipTap({ article }) {
    }
    console.log(article)
    setClicked(true);
-   console.log('Button clicked!');
-  }
+   }
 
   return (
     <div className="ReaderTipTapthings">

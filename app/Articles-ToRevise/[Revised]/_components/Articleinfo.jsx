@@ -97,8 +97,11 @@ function Articleinfo({ article, User }) {
              
 
             <div key={comment.id} className="mb-2 p-2 border rounded">
-               <p>Reviewer: {comment.attributes.Senderusername}</p>
-              <p>{renderComment(comment.attributes.Comment, index)}</p>
+  {!comment.attributes.isEditor ? (
+                               <p>Reviewer: {comment.attributes.Senderusername}</p>
+
+              ) : (           <p>Editor: {comment.attributes.Senderusername}</p>
+            ) }              <p>{renderComment(comment.attributes.Comment, index)}</p>
               <p>Status: {comment.isChecked ? "User has Fixed it" : "User Did Not Fix it"}</p>
               <input
                 type="checkbox"

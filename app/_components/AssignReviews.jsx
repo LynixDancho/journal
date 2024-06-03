@@ -31,7 +31,7 @@ import AssignItems from "@/components/AssignItems"
    <> 
 
     <div className='px-10 md:px-20'>
-    <h2 className='my-9 text-2xl font-sans font-bold'> Assign roles </h2>
+    <h2 className='my-9 text-2xl font-sans font-bold'> Assign Reviewers </h2>
     {!articleList? (            <div className="flex justify-center h-screen w-full items-center">  <l-waveform size="35" stroke="3.5" speed="1" color="black"></l-waveform></div>
 
 ) : (

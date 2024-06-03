@@ -16,8 +16,8 @@ function ReaderTipTap({ article}) {
   const { isLoaded, isSignedIn, user } = useUser();
   const [hasLoggedUser, setHasLoggedUser] = useState(false);
   waveform.register();
-
-  useEffect(() => {
+  
+   useEffect(() => {
     if (article && article.attributes && article.attributes.Bbody) {
       setContent(article.attributes.Bbody);
     }
