@@ -58,7 +58,7 @@ function SelectReviewers({ article }) {
 };
 
   return (
-    <div className="flex flex-col items-start w-fit justify-start min-h-fit  pl-5 pb-10  pt-10 bg-gray-100">
+    <div className="flex flex-col ml-8 items-start w-fit justify-start min-h-fit  pl-5 pb-10  pt-10 bg-white">
       <div className="mt-4">
         <p className="text-lg font-medium text-gray-700">Select up to four users:</p>
         <ul className="mt-2">

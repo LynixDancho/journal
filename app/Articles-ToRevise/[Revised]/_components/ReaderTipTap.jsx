@@ -140,7 +140,7 @@ function ReaderTipTap({ article }) {
   
 
   return (
-    <div className="ReaderTipTapthings">
+    <div className="ReaderTipTapthings w-[100%]">
       
         <div >
           <div className="mb-5 ">
@@ -156,7 +156,7 @@ function ReaderTipTap({ article }) {
             </label>
           </div>
         </div>
-        <div class="flex items-center justify-center sm:justify-start md:justify-end min-w-[300px] sm:min-w-[400px] md:min-w-[600px] lg:min-w-[800px] xl:min-w-[1000px]">
+        <div class="flex justify-end ">
         <div>
        
         <button onClick={handleClick} className="ml-5 group cursor-pointer outline-none" title="Add New">

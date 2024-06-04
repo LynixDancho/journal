@@ -152,7 +152,7 @@ bg-slate-200 rounded-lg animate-pulse
  
 <h1 className=' SubmittedBy    text-xl font-bold dark:text-white  '>Submitted By : {User?.username}</h1>
 <div className='flex mt-5 '>
-<div className="comment-react mr-4">
+<div className="comment-react mr-4 ml-5">
   <label className="heart-container">
     <input type="checkbox" className="checkbox"  checked={isLiked}
                 onChange={handleLikeChange} />

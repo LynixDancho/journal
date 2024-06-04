@@ -53,9 +53,11 @@ import ReaderTipTap from "./_components/ReaderTipTap"
   return (
     <>
       <div className="pagecss">
+        <div className="flex">
 <Articleinfo article={articleDetails} User={userDetails} />
+<AssignRole className="ml-2" article={articleDetails} />
+</div>
 <ReaderTipTap article={articleDetails} User={userDetails}/>
- <AssignRole article={articleDetails} />
  
  </div>
     </>

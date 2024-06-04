@@ -104,7 +104,7 @@ if(Appeal){
   }
 
   return (
-    <div className="ReaderTipTapthings mt-10">
+    <div className="ReaderTipTapthings ">
        
        <div >
           <div className="mb-5  flex">

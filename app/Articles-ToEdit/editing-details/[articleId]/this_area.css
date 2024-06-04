@@ -11,8 +11,7 @@
 }
 .pagecss{
 
-    display: flex;
-     margin-top: 10px;
+      margin-top: 10px;
     padding: 1%;
  }
 .PictureAndBio{
@@ -22,9 +21,8 @@
     flex-direction: column;
  }
  .ReaderTipTapthings{
-    margin-left: 7%;
-    padding: 2%;
-     
+    margin-left: 1%;
+      
 
  }
  

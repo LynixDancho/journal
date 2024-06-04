@@ -10,21 +10,19 @@
 
 }
 .pagecss{
-
-    display: flex;
-     margin-top: 10px;
+    width: 100% ;
+      margin-top: 10px;
     padding: 1%;
  }
-.PictureAndBio{
+ .PictureAndBio{
+    min-width: 250px;
 
     display: flex;
     flex-direction: column;
-    width:600px
-
+     
  }
  .ReaderTipTapthings{
-    margin-left: 7%;
-    padding: 2%;
+     padding: 2%;
      
 
  }
@@ -63,11 +61,7 @@ display: flex;
 
 
 @media (max-width: 768px) {
-        .avatar{
-           display: none;
-
-
-        }
+        
         .username_in_articlBody{
             display: block;
 
@@ -79,9 +73,7 @@ display: flex;
 
         }
         
-        .SubmittedBy{
-            display: none;
-        }
+        
         .articlebody{
             font-size: 15px;
             font-weight: medium;

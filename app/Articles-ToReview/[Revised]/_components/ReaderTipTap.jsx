@@ -110,12 +110,12 @@ function ReaderTipTap({ article }) {
   
 
   return (
-    <div className="ReaderTipTapthings">
+    <div className="ReaderTipTapthings w-[100%]">
       
-        <div >
-          <div className="mb-5  flex">
+        <div className='mr-5' >
+          <div className="mb-5  flex justify-end">
            
-            <div class="flex   sm:justify-start md:justify-end min-w-[300px] sm:min-w-[400px] md:min-w-[600px] lg:min-w-[800px] xl:min-w-[1000px]">
+            <div class="flex   ">
         <div>
        
         <button onClick={handleClick} className="  rounded-md bg-green-500  px-5 py-2.5 text-sm font-medium text-black transition hover:bg-teal-700 ml-5 group cursor-pointer outline-none" title="Add New">
