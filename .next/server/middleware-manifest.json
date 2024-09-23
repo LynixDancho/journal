@@ -3,7 +3,6 @@
   "middleware": {
     "/": {
       "files": [
-        "prerender-manifest.js",
         "server/edge-runtime-webpack.js",
         "server/middleware.js"
       ],
@@ -11,25 +10,13 @@
       "page": "/",
       "matchers": [
         {
-          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?(?:\\/((?!.+.[w]+$|_next).*))(.json)?[\\/#\\?]?$",
-          "originalSource": "/((?!.+.[w]+$|_next).*)"
-        },
-        {
-          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?(?:\\/(\\/?index|\\/?index\\.json))?[\\/#\\?]?$",
-          "originalSource": "/"
-        },
-        {
-          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?(?:\\/(api|trpc))(.*)(.json)?[\\/#\\?]?$",
-          "originalSource": "/(api|trpc)(.*)"
+          "regexp": "^/.*$",
+          "originalSource": "/:path*"
         }
       ],
       "wasm": [],
       "assets": [],
-      "environments": {
-        "previewModeId": "59c212a169b4a2f628c320a74c12b726",
-        "previewModeSigningKey": "3c57c2402cff13398f5fed8258f51817fa60ae2277ab73c9e32944b3ce8e3155",
-        "previewModeEncryptionKey": "0582b8dfd54205cb472af043bc8de5dc817937a2c860953e2559dde3c8eb486d"
-      }
+      "environments": {}
     }
   },
   "functions": {},
